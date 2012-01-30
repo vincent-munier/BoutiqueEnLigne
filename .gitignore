@@ -1,0 +1,7 @@
+#exclude all class files from git in any subdirectory. If you intend to 
+#only ignore the class files in the same directory, use /*.class instead
+*.class
+.settings
+.project
+.classpath
+target/*

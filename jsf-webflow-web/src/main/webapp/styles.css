@@ -1,0 +1,64 @@
+div#header{
+	background-color:#0C58A2;
+	height:145px;
+}
+
+div#banner{
+	float:left;
+}
+
+div#account{
+	float:left;
+	height:135px;
+	color:white;
+}
+
+div#cart{
+	float:right;
+	height:135px;
+	width:200px;
+	text-align:center;
+	color:white;
+	text-decoration: none;
+}
+
+div#categoryMenu{
+	height:21px;
+	background-color:#003888;
+	margin-top:-16px;
+}
+
+div#categoryMenu ul{
+	list-style : none outside none;
+}
+
+div#categoryMenu ul li{
+    color: white;
+    float: left;
+    font-weight: bold;
+    text-align: center;
+    width: 220px;
+}
+
+div#categoryMenu ul li a{
+    color: white;
+    text-decoration: none;
+}
+
+div#footer{
+	background-color: #EFEFEF;
+    height: 70px;	
+}
+
+#footer #abottom {
+    color: #949797;
+    float: right;
+    margin-right: 5px;
+    margin-top: 35px;
+}
+
+#footer img {
+    float: left;
+    margin-left: 5px;
+    margin-top: 35px;
+}

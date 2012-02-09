@@ -1,0 +1,40 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jee="http://www.springframework.org/schema/jee"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+       http://www.springframework.org/schema/jee
+       http://www.springframework.org/schema/jee/spring-jee-2.0.xsd">
+
+    <!-- Scans for application @Components to deploy -->
+    <import resource="jsf-webflow-web-components.xml" />
+
+    <import resource="jsf-webflow-webmvc-config.xml" />
+    <import resource="jsf-webflow-webflow-config.xml" />
+
+    <!--
+        Instructs Spring to perform declarative transaction management on
+        annotated classes
+    -->
+    <tx:annotation-driven />
+
+    <bean id="messageSource"
+          class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>messages</value>
+                <value>service_messages</value>
+                <value>persistance_messages</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- Drives transactions using local JPA APIs
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean> -->
+</beans>

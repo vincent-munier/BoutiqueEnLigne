@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        
+<!DOCTYPE facelet-taglib PUBLIC
+  "-//Sun Microsystems, Inc.//DTD Facelet Taglib 1.0//EN"
+  "facelet-taglib_1_0.dtd">
+
+<facelet-taglib xmlns="http://java.sun.com/JSF/Facelet">
+    
+	<namespace>http://center.bdf.fr</namespace>
+	<!--
+		Fonction indiquant si l'utilisateur possède ou non un rôle sécurité
+	-->
+	<function>
+		<function-name>hasAuthority</function-name>
+		<function-class>org.springframework.security.util.AuthorityUtils</function-class>
+		<function-signature>java.lang.Boolean userHasAuthority(java.lang.String)</function-signature>
+	</function>
+	
+	<function>
+		<function-name>getSecurityContextHolder</function-name>
+		<function-class>org.springframework.security.context.SecurityContextHolder</function-class>
+		<function-signature>org.springframework.security.context.SecurityContext getContext()</function-signature>
+	</function>
+    
+</facelet-taglib>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:sf="http://www.springframework.org/tags/faces"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:spring="http://www.springframework.org/tags"
+    >
+    <body>
+	    <ui:composition>
+ 			<div id="banner">
+ 				<img src="/banniere.jpg" alt="Mon ordinateur"></img>
+ 			</div>
+ 			 <div id="account">
+ 				<h:form>
+ 				<p><h:outputLabel value="Mon compte" /></p>
+ 					<h:panelGroup>
+  						<h:outputLabel id="loginLabel" for="loginTxt" value="Login" />
+  						<h:inputText id="loginTxt"/>
+					</h:panelGroup><br />
+		
+					<h:panelGroup>
+  						<h:outputLabel id="mdpLabel" for="mdpTxt" value="Password" />
+  						<h:inputText id="mdpTxt" />
+					</h:panelGroup><br />
+					<h:commandButton id="connexion" action="connexion" type="submit" value="Connexion" style="font:bold;" styleClass="none;" />
+ 				</h:form>
+ 			</div>
+ 			<div id="cart">
+ 				<h:form>
+					<h:commandLink value="Panier" action="cart" />
+	    		</h:form>
+ 			</div>
+	    </ui:composition>
+    </body>
+</html>

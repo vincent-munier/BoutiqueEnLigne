@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:sf="http://www.springframework.org/tags/faces"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:spring="http://www.springframework.org/tags"
+    >
+	
+	<body>
+		<ui:composition template="layout.xhtml">
+			<style type="text/css">
+				.row1 {
+					background-color: #EDEBEB;
+				}
+				.row2 {
+					background-color: #ffffff;
+				}
+			</style>
+			<ui:define name="content">
+				<h:form id="listProduct">
+					<rich:dataTable value="#{flowScope.listProduct}" var="product" border="1" cellspacing="4" width="100%" id="table" rows="20" rowClasses="row1, row2">
+						<rich:column>
+							<f:facet name="header">
+								<f:verbatim></f:verbatim>
+							</f:facet>
+							<h:graphicImage value="#{product.imageUrl}" /> 
+						</rich:column>
+						<rich:column  sortBy="#{product.name}">
+							<f:facet name="header">
+								<f:verbatim>Titre</f:verbatim>
+							</f:facet>
+							<h:outputText value="#{product.name}"/>
+						</rich:column>
+						<rich:column sortBy="#{product.price}">
+							<f:facet name="header">
+								<f:verbatim>Prix</f:verbatim>
+							</f:facet>
+							<h:outputText value="#{product.price}"/>
+						</rich:column>
+					</rich:dataTable>
+					<rich:datascroller for="table" align="center"></rich:datascroller>
+				</h:form>
+			</ui:define>
+		</ui:composition>
+	</body>
+</html>
+			

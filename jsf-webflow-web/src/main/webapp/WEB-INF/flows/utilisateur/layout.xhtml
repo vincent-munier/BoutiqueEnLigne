@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:sf="http://www.springframework.org/tags/faces"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:spring="http://www.springframework.org/tags"
+    >
+ 
+    <head>
+		<link href="/styles.css" rel="stylesheet" type="text/css"/>
+    </head>
+ 
+    <body>
+		<div id="page"> 
+		    <div id="header">
+				<ui:insert name="header" >
+					<ui:include src="header.xhtml" />
+				</ui:insert>
+		    </div>
+		    
+			<div id="categoryMenu">
+				<ui:insert name="categoryMenu" >
+					<ui:include src="categoryMenu.xhtml" />
+				</ui:insert>
+		    </div>
+	 
+		    <div id="content">
+			  	<ui:insert name="content" />
+		    </div>
+	 
+		    <div id="footer">
+		    	<ui:insert name="footer" >
+		    		<ui:include src="footer.xhtml" />
+		    	</ui:insert>
+			</div>
+        </div>
+    </body>
+</html>

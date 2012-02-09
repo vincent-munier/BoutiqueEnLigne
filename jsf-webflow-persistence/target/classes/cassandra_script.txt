@@ -1,0 +1,54 @@
+drop keyspace BoutiqueKeyspace;
+create keyspace BoutiqueKeyspace
+    with strategy_options = {replication_factor:1}
+    and placement_strategy = 'org.apache.cassandra.locator.SimpleStrategy';
+
+use BoutiqueKeyspace;
+
+drop column family Categories;
+create column family Categories
+    with comparator = UTF8Type
+    and default_validation_class = 'UTF8Type'
+    and key_validation_class = 'LongType'
+    and column_metadata = [{column_name: id, validation_class:LongType},
+                           {column_name: name, validation_class:UTF8Type}];
+
+set Categories[0][id] = '0';
+set Categories[0][name] = 'Livres';
+
+set Categories[1][id] = '1';
+set Categories[1][name] = 'DVD';
+
+drop column family Products;
+
+create column family Products
+    with comparator = 'UTF8Type'
+    and default_validation_class = 'UTF8Type'
+    and key_validation_class = 'UTF8Type'
+    and column_metadata = [{column_name: id, validation_class:UTF8Type},
+                           {column_name: name, validation_class:UTF8Type},
+                           {column_name: description, validation_class:UTF8Type},
+                           {column_name: price, validation_class:UTF8Type}];
+ 	
+set Products['A144GEAD56'][id] = 'A144GEAD56';
+set Products['A144GEAD56'][name] = 'Tv Hd';
+set Products['A144GEAD56'][description] = 'Écran géant comme au cinéma';
+set Products['A144GEAD56'][price] = '360';
+
+set Products['D329FEJD7M'][id] = 'D329FEJD7M';
+set Products['D329FEJD7M'][name] = 'Buzz l\'Éclair';
+set Products['D329FEJD7M'][description] = 'Buzz vole pour de vrai !';
+set Products['D329FEJD7M'][price] = '59.99';
+
+set Products['G974FFPJ72'][id] = 'G974FFPJ72';
+set Products['G974FFPJ72'][name] = 'Apprendre à programmer en C';
+set Products['G974FFPJ72'][description] = 'Livre pédagogique pour apprendre le langage C';
+set Products['G974FFPJ72'][price] = '35';
+
+drop column family CategoryProducts;
+create column family CategoryProducts
+    with comparator = 'UTF8Type'
+    and default_validation_class = 'UTF8Type'
+    and key_validation_class = 'LongType';
+
+set CategoryProducts[1]['A144GEAD56'] = '';

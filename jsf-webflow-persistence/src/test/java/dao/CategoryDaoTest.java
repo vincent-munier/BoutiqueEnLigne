@@ -14,49 +14,51 @@ public class CategoryDaoTest {
 
   private CategoryDao categoryDao = new CategoryDaoImp();
 
-  // "Livres" and "DVD" already exists at indices 0 and 1 respectively;
-  // "Films" is a new one which doesn't exist yet.
-  private final String[] categoryNames = { "Livres", "DVD", "Films" };
+  // categoryNames which already exist
+  private final String[] categoryNames = { "Autres", "Livres", "DVD", "TV" };
 
   private Category newCategory;
+  private String newCategoryName = "Films";
+  private long newCategoryIdx = -1;
 
   @Before
   public void before() {
     newCategory = new Category();
-    int idx = 2;
-    newCategory.setName(categoryNames[idx]);
-    newCategory.setId(idx);
+    newCategory.setName(newCategoryName);
+    newCategory.setId(newCategoryIdx);
   }
 
   @Test
   public void insertData() {
-
     categoryDao.save(newCategory);
   }
 
   @Test
   public void retrieveData() {
-    // retrieve the new one which has just been inserted
-    long idx = 0;
+    // retrieve an old one
+    long idx = 1;
     Category catFound = categoryDao.find(idx);
     checkConsistency(catFound, idx);
 
-    // retrieve the old one
-    idx = 2;
-    catFound = categoryDao.find(idx);
-    checkConsistency(catFound, idx);
+    // retrieve the new one which has just been inserted
+    catFound = categoryDao.find(newCategoryIdx);
+    checkConsistency(catFound, newCategoryIdx);
   }
 
   public void checkConsistency(Category category, long idx) {
     Assert.assertNotNull(category);
-    Assert.assertEquals(categoryNames[(int)idx], category.getName());
+    if (idx == newCategoryIdx)
+      Assert.assertEquals(newCategoryName, category.getName());
+    else
+      Assert.assertEquals(categoryNames[(int) idx], category.getName());
   }
 
   @Test
   public void retrieveAll() {
     Map<Long, Category> map = categoryDao.findAll();
 
-    Assert.assertEquals(map.size(), categoryNames.length);
+    Assert.assertEquals(map.size(), categoryNames.length + 1);
+    checkConsistency(map.get(newCategoryIdx), newCategoryIdx);
     for (long i = 0; i < categoryNames.length; i++) {
       checkConsistency(map.get(i), i);
     }

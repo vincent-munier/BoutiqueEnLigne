@@ -14,13 +14,18 @@ create column family Categories
                            {column_name: name, validation_class:UTF8Type}];
 
 set Categories[0][id] = '0';
-set Categories[0][name] = 'Livres';
+set Categories[0][name] = 'Autres';
 
 set Categories[1][id] = '1';
-set Categories[1][name] = 'DVD';
+set Categories[1][name] = 'Livres';
+
+set Categories[2][id] = '2';
+set Categories[2][name] = 'DVD';
+
+set Categories[3][id] = '3';
+set Categories[3][name] = 'TV';
 
 drop column family Products;
-
 create column family Products
     with comparator = 'UTF8Type'
     and default_validation_class = 'UTF8Type'
@@ -28,22 +33,26 @@ create column family Products
     and column_metadata = [{column_name: id, validation_class:UTF8Type},
                            {column_name: name, validation_class:UTF8Type},
                            {column_name: description, validation_class:UTF8Type},
-                           {column_name: price, validation_class:UTF8Type}];
+                           {column_name: price, validation_class:UTF8Type},
+                           {column_name: categoryId, validation_class:LongType}];
  	
 set Products['A144GEAD56'][id] = 'A144GEAD56';
 set Products['A144GEAD56'][name] = 'Tv Hd';
 set Products['A144GEAD56'][description] = 'Écran géant comme au cinéma';
 set Products['A144GEAD56'][price] = '360';
+set Products['A144GEAD56'][categoryId] = '3';
 
 set Products['D329FEJD7M'][id] = 'D329FEJD7M';
 set Products['D329FEJD7M'][name] = 'Buzz l\'Éclair';
 set Products['D329FEJD7M'][description] = 'Buzz vole pour de vrai !';
 set Products['D329FEJD7M'][price] = '59.99';
+set Products['D329FEJD7M'][categoryId] = '0';
 
 set Products['G974FFPJ72'][id] = 'G974FFPJ72';
 set Products['G974FFPJ72'][name] = 'Apprendre à programmer en C';
 set Products['G974FFPJ72'][description] = 'Livre pédagogique pour apprendre le langage C';
 set Products['G974FFPJ72'][price] = '35';
+set Products['G974FFPJ72'][categoryId] = '1';
 
 drop column family CategoryProducts;
 create column family CategoryProducts
@@ -51,4 +60,7 @@ create column family CategoryProducts
     and default_validation_class = 'UTF8Type'
     and key_validation_class = 'LongType';
 
-set CategoryProducts[1]['A144GEAD56'] = '';
+set CategoryProducts[0]['D329FEJD7M'] = '';
+set CategoryProducts[1]['G974FFPJ72'] = '';
+set CategoryProducts[3]['A144GEAD56'] = '';
+

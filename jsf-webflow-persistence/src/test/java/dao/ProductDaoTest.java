@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import fr.umlv.m2.jee.persistence.category.Category;
 import fr.umlv.m2.jee.persistence.product.Product;
 import fr.umlv.m2.jee.persistence.product.ProductDao;
 import fr.umlv.m2.jee.persistence.product.ProductDaoImp;
@@ -13,25 +14,31 @@ import fr.umlv.m2.jee.persistence.product.ProductDaoImp;
 public class ProductDaoTest {
   private ProductDao productDao = new ProductDaoImp();
 
-  private final String[] iDs = { "A144GEAD56", "D329FEJD7M", "FE14G74ED" };
+  private final String[] iDs = { "A144GEAD56", "D329FEJD7M" };
   // "Tv Hd" and "Buzz l'Éclair" already exists at indices iDs[0] and
   // iDs[1] respectively;
-  // "Ordi Asus" is a new one which doesn't exist yet.
-  private final String[] productNames = { "Tv Hd", "Buzz l'Éclair", "Ordi Asus" };
+  private final String[] productNames = { "Tv Hd", "Buzz l'Éclair" };
   private final String[] productDescriptions = { "Écran géant comme au cinéma",
-      "Buzz vole pour de vrai !", "Nouveau processeur Intel 2970-QM" };
-  private final double[] productPrices = { 360, 59.99, 649.98 };
+      "Buzz vole pour de vrai !" };
+  private final double[] productPrices = { 360, 59.99 };
+  private final String[] productCategoryNamesAttached = { "TV", "Autres" };
 
   private Product newProduct;
+  private String newProductId = "FE14G74ED";
+  private String newProductName = "Ordi Asus";
+  private String newProductDescription = "Nouveau processeur Intel 2970-QM";
+  private double newProductPrice = 649.98;
+  private String newProductCategoryNameAttached = "Autres";
 
   @Before
   public void before() {
     newProduct = new Product();
-    int idx = 2;
-    newProduct.setId(iDs[idx]);
-    newProduct.setName(productNames[idx]);
-    newProduct.setDescription(productDescriptions[idx]);
-    newProduct.setPriceDouble(productPrices[idx]);
+
+    newProduct.setId(newProductId);
+    newProduct.setName(newProductName);
+    newProduct.setDescription(newProductDescription);
+    newProduct.setPriceDouble(newProductPrice);
+    newProduct.setCategory(new Category(0, "Autres"));
   }
 
   @Test
@@ -41,25 +48,35 @@ public class ProductDaoTest {
 
   @Test
   public void retrieveData() {
-    // retrieve the new one which has just been inserted
+    // retrieve the old one
     int idx = 0;
     Product productFound = productDao.find(iDs[idx]);
     checkConsistency(productFound, idx);
 
-    // retrieve the old one
-    idx = 2;
-    productFound = productDao.find(iDs[idx]);
-    checkConsistency(productFound, idx);
+    // retrieve the new one which has just been inserted
+    productFound = productDao.find(newProductId);
+    checkFields(productFound, newProductName, newProductDescription,
+        newProductPrice, newProductCategoryNameAttached);
   }
 
-  public void checkConsistency(Product product, int idx) {
+  public void checkFields(Product product, String productName,
+      String productDescription, double productPrice,
+      String categoryNameAttached) {
     Assert.assertNotNull(product);
-    Assert.assertEquals(productNames[idx], product.getName());
-    Assert.assertEquals(productDescriptions[idx], product.getDescription());
+    Assert.assertEquals(productName, product.getName());
+    Assert.assertEquals(productDescription, product.getDescription());
 
     // Epsilon is the value that the 2 numbers can be off by. So it will assert
     // to true as long as Math.abs(expected - actual) < epsilon
-    Assert.assertEquals(productPrices[idx], product.getPriceDouble(), 500000);
+    Assert.assertEquals(productPrice, product.getPriceDouble(), 500000);
+
+    Assert.assertNotNull(product.getCategory());
+    Assert.assertEquals(product.getCategory().getName(), categoryNameAttached);
+  }
+
+  public void checkConsistency(Product product, int idx) {
+    checkFields(product, productNames[idx], productDescriptions[idx],
+        productPrices[idx], productCategoryNamesAttached[idx]);
   }
 
   @Test

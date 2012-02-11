@@ -55,8 +55,8 @@ set Products['G974FFPJ72'][price] = '35';
 set Products['G974FFPJ72'][categoryId] = '1';
 
 set Products['Y145PLSZ03'][id] = 'Y145PLSZ03';
-set Products['Y145PLSZ03'][name] = 'Mathématiques concrètes : Fondations pour l'informatique';
-set Products['Y145PLSZ03'][description] = 'ouvrage consacré aux mathématiques qui sont à la base de l'informatique';
+set Products['Y145PLSZ03'][name] = 'Mathématiques concrètes : Fondations pour l\'informatique';
+set Products['Y145PLSZ03'][description] = 'ouvrage consacré aux mathématiques qui sont à la base de l\'informatique';
 set Products['Y145PLSZ03'][price] = '70.02';
 set Products['Y145PLSZ03'][categoryId] = '1';
 

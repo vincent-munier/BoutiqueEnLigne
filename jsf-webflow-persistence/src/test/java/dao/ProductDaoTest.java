@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.junit.Assert;
@@ -85,6 +86,22 @@ public class ProductDaoTest {
 
     for (int i = 0; i < productNames.length; i++) {
       checkConsistency(map.get(iDs[i]), i);
+    }
+  }
+
+  @Test
+  public void findAllByCategoryIdTest() {
+    String categoryName = "Autres";
+    long categoryId = 0;
+
+    List<Product> products = productDao.findAllByCategoryId(categoryId);
+
+    Assert.assertTrue(products.size() >= 1);
+    for (Product product : products) {
+      Category categoryAttached = product.getCategory();
+      Assert.assertNotNull(categoryAttached);
+      Assert.assertEquals(categoryId, categoryAttached.getId());
+      Assert.assertEquals(categoryName, categoryAttached.getName());
     }
   }
 

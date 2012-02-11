@@ -54,6 +54,12 @@ set Products['G974FFPJ72'][description] = 'Livre pédagogique pour apprendre le 
 set Products['G974FFPJ72'][price] = '35';
 set Products['G974FFPJ72'][categoryId] = '1';
 
+set Products['Y145PLSZ03'][id] = 'Y145PLSZ03';
+set Products['Y145PLSZ03'][name] = 'Mathématiques concrètes : Fondations pour l\'informatique';
+set Products['Y145PLSZ03'][description] = 'ouvrage consacré aux mathématiques qui sont à la base de l\'informatique';
+set Products['Y145PLSZ03'][price] = '70.02';
+set Products['Y145PLSZ03'][categoryId] = '1';
+
 drop column family CategoryProducts;
 create column family CategoryProducts
     with comparator = 'UTF8Type'
@@ -62,5 +68,6 @@ create column family CategoryProducts
 
 set CategoryProducts[0]['D329FEJD7M'] = '';
 set CategoryProducts[1]['G974FFPJ72'] = '';
+set CategoryProducts[1]['Y145PLSZ03'] = '';
 set CategoryProducts[3]['A144GEAD56'] = '';
 

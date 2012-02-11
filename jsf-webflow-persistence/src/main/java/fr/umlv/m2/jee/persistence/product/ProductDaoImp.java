@@ -3,13 +3,12 @@ package fr.umlv.m2.jee.persistence.product;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.prettyprint.cassandra.model.CqlQuery;
 import me.prettyprint.cassandra.serializers.LongSerializer;
-import me.prettyprint.hector.api.beans.ColumnSlice;
 import me.prettyprint.hector.api.beans.HColumn;
+import me.prettyprint.hector.api.beans.Row;
 import me.prettyprint.hector.api.factory.HFactory;
 import me.prettyprint.hector.api.mutation.Mutator;
-import me.prettyprint.hector.api.query.QueryResult;
-import me.prettyprint.hector.api.query.SliceQuery;
 import fr.umlv.m2.jee.database.cassandra.AbstractColumnFamilyDao;
 import fr.umlv.m2.jee.persistence.category.Category;
 import fr.umlv.m2.jee.persistence.category.CategoryDao;
@@ -62,23 +61,26 @@ public class ProductDaoImp extends AbstractColumnFamilyDao<String, Product>
   }
 
   public List<Product> findAllByCategoryId(long categoryId) {
-    SliceQuery<Long, String, byte[]> query = HFactory.createSliceQuery(
+
+    CqlQuery<Long, String, byte[]> cqlQuery = new CqlQuery<Long, String, byte[]>(
         keyspace, longSerializer, stringSerializer, bytesSerializer);
 
-    QueryResult<ColumnSlice<String, byte[]>> result = query
-        .setColumnFamily("CategoryProducts").setKey(categoryId)
-        .setColumnNames(allColumnNames).execute();
-
+    cqlQuery.setQuery("SELECT * FROM CategoryProducts WHERE KEY = " + 0);
+    
+    Row<Long, String, byte[]> row = cqlQuery.execute().get().getList().get(0);
+    List<HColumn<String, byte[]>> columns = row.getColumnSlice().getColumns();
+    columns.remove(0);
+    
     List<Product> productsOfCategory = new ArrayList<Product>();
+    for (HColumn<String, byte[]> col : columns) {
 
-    for (HColumn<String, byte[]> col : result.get().getColumns()) {
       String productId = col.getName();
       Product product = find(productId);
       if (product == null)
         throw new RuntimeException("No product with productId=" + productId
             + " found in Products whereas it exists for categoryId="
             + categoryId + " in CategoryProducts");
-      
+
       productsOfCategory.add(product);
     }
 
@@ -94,7 +96,7 @@ public class ProductDaoImp extends AbstractColumnFamilyDao<String, Product>
     Category category = product.getCategory();
     if (category != null) {
       categoryProductsMutator.delete(category.getId(), "CategoryProducts",
-          null, longSerializer);
+          product.getId(), stringSerializer);
     }
 
   }

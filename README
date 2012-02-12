@@ -1,1 +1,6 @@
 Le fichier d'initialisation de la base Cassandra est BoutiqueEnLigne/jsf-webflow-persistence/src/main/resources/cassandra_script.txt
+Faire des mvn install dans cet ordre :
+dans Database
+puis dans BoutiqueEnLigne/jsf-webflow-persistence
+puis dans Webservice
+et enfin dans BoutiqueEnLigne

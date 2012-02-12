@@ -1,1 +1,1 @@
-Le fichier d'initialisation de la base Cassandra est src/main/resources/cassandra_script.txt
+Le fichier d'initialisation de la base Cassandra est BoutiqueEnLigne/jsf-webflow-persistence/src/main/resources/cassandra_script.txt

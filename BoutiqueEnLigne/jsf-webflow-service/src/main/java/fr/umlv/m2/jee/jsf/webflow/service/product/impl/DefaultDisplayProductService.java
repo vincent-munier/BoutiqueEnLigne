@@ -34,6 +34,7 @@ public class DefaultDisplayProductService implements IDisplayProductService {
 		List<String> id = new ArrayList<String>(products.size());
 		for(Product p : products.values())
 			id.add(p.getId());
+
 		AWSECommerceServicePortType port = UtilsWebService.InitWebService();
 		result.addAll(UtilsWebService.getProductById(port, id));
 		return result;

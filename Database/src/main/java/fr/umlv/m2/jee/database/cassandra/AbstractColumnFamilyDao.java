@@ -83,32 +83,19 @@ public abstract class AbstractColumnFamilyDao<KeyType, T> {
     QueryResult<CqlRows<KeyType, String, byte[]>> res = cqlQuery.execute();
 
     CqlRows<KeyType, String, byte[]> rows = res.get();
-    System.out.println(rows.getList().size());
+    
     for (Row<KeyType, String, byte[]> row : rows.getList()) {
-      System.out.print("row key : " + row.getKey() + ", cols : [");
-
+      
       KeyType key = row.getKey();
-      map.put(key, find((KeyType)key));
+      T valueFound = find(key);
+      // In Cassandra, a deleted row becomes empty but is not necessarily removed.
+      // An empty row should be considered the same as a deleted row. 
+      // Actually a deleted row will go away completely after the next compaction.
+      if (valueFound != null)
+        map.put(key, valueFound);
     }
+    
     return map;
-    //
-    // CqlQuery<KeyType, String, byte[]> cqlQuery = new CqlQuery<KeyType,
-    // String, byte[]>(
-    // keyspace, keySerializer, stringSerializer, bytesSerializer);
-    // cqlQuery.setQuery("SELECT * FROM " + columnFamilyName);
-    // System.out.println("SELECT * FROM " + columnFamilyName);
-    // QueryResult<CqlRows<KeyType, String, byte[]>> res = cqlQuery.execute();
-    //
-    // CqlRows<KeyType, String, byte[]> rows = res.get();
-    //
-    // for (Row<KeyType, String, byte[]> row : rows.getList()) {
-    // System.out.print("row key : " + row.getKey() + ", cols : [");
-    //
-    // KeyType key = row.getKey();
-    // map.put(key, find(key));
-    // System.out.println("value insert in map : " + map.get(key));
-    // }
-    // return map;
   }
 
   public void delete(KeyType key) {

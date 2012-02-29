@@ -2,7 +2,9 @@ package fr.umlv.m2.jee.persistence.product;
 
 import fr.umlv.m2.jee.persistence.category.Category;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable{
   private String id;
   private String name;
   private String price;
@@ -14,7 +16,7 @@ public class Product {
   // productDao.find if it is not set with a valid id
   private long categoryId = -1;
 
-  public Product() {
+  public Product(){
   }
 
   public Product(String id, String name, String price, String description,

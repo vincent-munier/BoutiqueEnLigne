@@ -6,6 +6,7 @@
     http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
 
 	<on-start>
+        <evaluate expression="defaultDisplayProductService.init()"></evaluate>
 		<evaluate expression="defaultDisplayProductService.getAllProduct()" result="flowScope.listProduct"></evaluate>
 		<!-- faire un test de role (client, utilisateur) est stocké ds une var a part pour retest dans la page-->
 	</on-start>

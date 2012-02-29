@@ -56,11 +56,8 @@ public class UtilsWebService{
 		lookup.setAWSAccessKeyId(awsAccessKeyID);
 		lookup.getRequest().add(itemLookup);	
 		Holder<OperationRequest> operationrequest = new Holder<OperationRequest>();
-		Holder<java.util.List<Items>> items = new Holder<java.util.List<Items>> ();				
-		System.out.println(itemLookup.getItemId().size());
+		Holder<java.util.List<Items>> items = new Holder<java.util.List<Items>> ();
 		port.itemLookup("", awsAccessKeyID, awsDeveloperID, "", "", itemLookup, lookup.getRequest(), operationrequest, items);
-		System.out.println(items.value.size());
-		System.out.println(items.value.get(0).getItem().size());
 		for(Item item : items.value.get(0).getItem())
 			result.add(new Product(item.getASIN(), item.getItemAttributes().getTitle(), item.getItemAttributes().getListPrice().getFormattedPrice(), "", item.getMediumImage().getURL(), new Category(0,"Autres")));
 		return result;

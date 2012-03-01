@@ -3,6 +3,7 @@ package fr.umlv.m2.jee.persistence.category;
 import java.io.Serializable;
 
 public class Category implements Serializable{
+  private static final long serialVersionUID = -4119180255590344115L;
   private long id;
   private String name;
 

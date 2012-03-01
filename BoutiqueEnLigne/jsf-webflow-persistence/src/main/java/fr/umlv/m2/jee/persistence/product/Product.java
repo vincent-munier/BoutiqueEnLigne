@@ -5,6 +5,7 @@ import fr.umlv.m2.jee.persistence.category.Category;
 import java.io.Serializable;
 
 public class Product implements Serializable{
+  private static final long serialVersionUID = -1911129413615174692L;
   private String id;
   private String name;
   private String price;

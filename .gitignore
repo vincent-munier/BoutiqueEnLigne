@@ -9,3 +9,8 @@ BoutiqueEnLigne/jsf-webflow-service/target/*
 BoutiqueEnLigne/jsf-webflow-web/target/*
 Database/target/*
 WebService/target/*
+mvn_install.sh
+kill_cassandra.sh
+run_cassandra.sh
+run_cassandra_script.sh
+mvn_clean.sh

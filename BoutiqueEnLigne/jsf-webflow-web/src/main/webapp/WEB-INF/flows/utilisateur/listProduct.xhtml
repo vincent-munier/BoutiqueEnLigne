@@ -43,6 +43,9 @@
 							</f:facet>
 							<h:outputText value="#{product.price}"/>
 						</rich:column>
+						<rich:column>
+							<h:commandButton id="addCart" action="addCart" type="submit" value="Ajouter" style="font:bold;" styleClass="none;" />
+						</rich:column>
 					</rich:dataTable>
 					<rich:datascroller for="table" align="center"></rich:datascroller>
 				</h:form>

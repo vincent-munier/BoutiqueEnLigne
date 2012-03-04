@@ -4,15 +4,50 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/webflow
     http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+	
+	<var name="Product" class="fr.umlv.m2.jee.persistence.product.Product" />
+	<var name="DisplayProduct" class="fr.umlv.m2.jee.jsf.webflow.service.cart.DisplayProduct" />
 
 	<on-start>
+		<evaluate expression="defaultDisplayCartService.init()"></evaluate>
         <evaluate expression="defaultDisplayProductService.init()"></evaluate>
-		<evaluate expression="defaultDisplayProductService.getAllProduct()" result="flowScope.listProduct"></evaluate>
+		<evaluate expression="defaultDisplayProductService.getAllProduct()" result="flowScope.listProduct" result-type="dataModel"></evaluate>
 		<!-- faire un test de role (client, utilisateur) est stocké ds une var a part pour retest dans la page-->
 	</on-start>
 	
     <view-state id="listProduct" view="listProduct.xhtml">
-
+		<transition on="addCart" to="addCart">
+			<set name="Product" value="flowScope.listProduct.selectedRow" />
+		</transition>
+		<transition on="viewCart" to="cart">
+			<evaluate expression="defaultDisplayCartService.getAllProduct()" result="flowScope.listDisplayProduct" result-type="dataModel"></evaluate>
+		</transition>
     </view-state>
+    
+    <view-state id="cart" view="cart.xhtml">
+    	<transition on="continue" to="listProduct">
+			<evaluate expression="defaultDisplayProductService.getAllProduct()" result="flowScope.listProduct" result-type="dataModel"></evaluate>
+    	</transition>
+    	<transition on="delCart" to="delCart">
+			<set name="DisplayProduct" value="flowScope.listDisplayProduct.selectedRow" />
+    	</transition>
+    	<transition on="viewCart" to="cart">
+			<evaluate expression="defaultDisplayCartService.getAllProduct()" result="flowScope.listDisplayProduct" result-type="dataModel"></evaluate>
+		</transition>
+    </view-state>
+    
+    <action-state id="addCart">
+    	<evaluate expression="defaultDisplayCartService.addProduct(Product)" ></evaluate>
+    	<transition on="success" to="cart">
+    		<evaluate expression="defaultDisplayCartService.getAllProduct()" result="flowScope.listDisplayProduct" result-type="dataModel"></evaluate>
+    	</transition>
+    </action-state>
+    
+    <action-state id="delCart">
+    	<evaluate expression="defaultDisplayCartService.delProduct(DisplayProduct)" ></evaluate>
+    	<transition on="success" to="cart">
+    		<evaluate expression="defaultDisplayCartService.getAllProduct()" result="flowScope.listDisplayProduct" result-type="dataModel"></evaluate>
+    	</transition>
+    </action-state>
     
 </flow>

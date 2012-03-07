@@ -100,4 +100,10 @@ public class ProductDaoImp extends AbstractColumnFamilyDao<String, Product>
     }
 
   }
+
+  @Override
+  public List<Product> findAllByCommandId(long commandId) {
+    // TODO Auto-generated method stub
+    return null;
+  }
 }

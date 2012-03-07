@@ -9,58 +9,65 @@
 	xmlns:sf="http://www.springframework.org/tags/faces"
 	xmlns:a4j="http://richfaces.org/a4j"
 	xmlns:rich="http://richfaces.org/rich"
-	xmlns:spring="http://www.springframework.org/tags"
-    >
-	
-	<body>
-		<ui:composition template="layout.xhtml">
-			<style type="text/css">
-				.row1 {
-					background-color: #EDEBEB;
-				}
-				.row2 {
-					background-color: #ffffff;
-				}
-			</style>
-			<ui:define name="content">
-				<fieldset>
-				<legend style="color:blue;font-weight:bold;">Votre panier</legend>
+	xmlns:spring="http://www.springframework.org/tags">
+
+<body>
+	<ui:composition template="layout.xhtml">
+		<style type="text/css">
+.row1 {
+	background-color: #EDEBEB;
+}
+
+.row2 {
+	background-color: #ffffff;
+}
+</style>
+		<ui:define name="content">
+			<fieldset>
+				<legend style="color: blue; font-weight: bold;">Votre
+					panier</legend>
 				<h:form id="listProduct">
-					<rich:dataTable value="#{flowScope.listDisplayProduct}" var="product" border="1" cellspacing="4" width="100%" id="table" rows="20" rowClasses="row1, row2">
+					<rich:dataTable value="#{flowScope.listDisplayProduct}"
+						var="product" border="1" cellspacing="4" width="100%" id="table"
+						rows="20" rowClasses="row1, row2">
 						<rich:column>
 							<f:facet name="header">
 								<f:verbatim></f:verbatim>
 							</f:facet>
-							<h:graphicImage value="#{product.imageUrl}" /> 
+							<h:graphicImage value="#{product.imageUrl}" />
 						</rich:column>
-						<rich:column  sortBy="#{product.name}">
+						<rich:column sortBy="#{product.name}">
 							<f:facet name="header">
 								<f:verbatim>Titre</f:verbatim>
 							</f:facet>
-							<h:outputText value="#{product.name}"/>
+							<h:outputText value="#{product.name}" />
 						</rich:column>
 						<rich:column sortBy="#{product.quantity}">
 							<f:facet name="header">
 								<f:verbatim>Quantité</f:verbatim>
 							</f:facet>
-							<h:outputText value="#{product.quantity}"/>
+							<h:outputText value="#{product.quantity}" />
 						</rich:column>
 						<rich:column sortBy="#{product.priceTot}">
 							<f:facet name="header">
 								<f:verbatim>Prix</f:verbatim>
 							</f:facet>
-							<h:outputText value="#{product.priceTot}"/>
+							<h:outputText value="#{product.priceTot}" />
 						</rich:column>
 						<rich:column>
-							<h:commandButton id="delCart" action="delCart" type="submit" value="Supprimer" style="font:bold;" styleClass="none;" />
+							<h:commandButton id="delCart" action="delCart" type="submit"
+								value="Supprimer" style="font:bold;" styleClass="none;" />
 						</rich:column>
 					</rich:dataTable>
 					<rich:datascroller for="table" align="center"></rich:datascroller>
-				<h:commandButton id="continue" action="continue" type="submit" value="Continuer vos achats" style="font:bold;" styleClass="none;" />
+					<h:commandButton id="continue" action="continue" type="submit"
+						value="Continuer vos achats" style="font:bold;" styleClass="none;" />
+					<h:commandButton id="checkout" action="checkout" type="submit"
+						value="Passer la commande" style="font:bold;" styleClass="none;" />
 				</h:form>
-				</fieldset>
-			</ui:define>
-		</ui:composition>
-	</body>
+			</fieldset>
+		</ui:define>
+	</ui:composition>
+</body>
 </html>
-			
+

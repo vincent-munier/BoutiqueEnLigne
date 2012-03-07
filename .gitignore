@@ -14,3 +14,4 @@ kill_cassandra.sh
 run_cassandra.sh
 run_cassandra_script.sh
 mvn_clean.sh
+mvn_boutique_install.sh

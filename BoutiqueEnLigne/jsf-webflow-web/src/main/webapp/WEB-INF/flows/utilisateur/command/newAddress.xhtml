@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:sf="http://www.springframework.org/tags/faces"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:spring="http://www.springframework.org/tags">
+
+<body>
+	<ui:composition template="../layout.xhtml">
+
+		<ui:define name="content">
+			<fieldset>
+				<h2>Entrez votre adresse de livraison</h2>
+				<table style="border: 0">
+					<tr>
+						<td>Adresse :</td>
+						<td><h:inputText value="" id="address" /></td>
+					</tr>
+					<tr>
+						<td>Code postal :</td>
+						<td><h:inputText value="" id="postalCode" /></td>
+					</tr>
+					<tr>
+						<td>Ville :</td>
+						<td><h:inputText value="" id="town" /></td>
+					</tr>
+					<tr>
+						<td>Pays :</td>
+						<td><h:inputText value="France" id="country" /></td>
+					</tr>
+				</table>
+				<h:form>
+					<h:commandButton id="continueCommand" action="continueCommand"
+						type="submit" value="Continuer la commande" style="font:bold;"
+						styleClass="none;" />
+					<h:commandButton id="continuePurchase" action="continuePurchase"
+						type="submit" value="Revenir à vos achats" style="font:bold;"
+						styleClass="none;" />
+				</h:form>
+			</fieldset>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>
+

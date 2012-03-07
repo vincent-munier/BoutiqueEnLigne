@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:sf="http://www.springframework.org/tags/faces"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:spring="http://www.springframework.org/tags">
+
+<body>
+	<ui:composition template="../layout.xhtml">
+
+		<ui:define name="content">
+			<h:form id="listAddresses">
+				<table id="availableAddresses">
+
+					<tr>
+						<td><rich:dataTable value="#{flowScope.listAddresses}"
+								var="adr" border="1" cellspacing="4" width="100%" id="table"
+								rows="20">
+								<rich:column>
+									<f:facet name="header">
+										<f:verbatim>Adresses disponibles</f:verbatim>
+									</f:facet>
+									<input type="radio" name="addresses" value="adrRadio" />
+									<h:outputText value="#{adr.formattedString}" />
+								</rich:column>
+							</rich:dataTable> <rich:datascroller for="table" align="center" maxPages="10"
+								renderIfSinglePage="false"></rich:datascroller></td>
+						<td><input type="radio" name="addresses" value="adrRadio" />
+							Saisir une autre adresse de livraison</td>
+					</tr>
+				</table>
+			</h:form>
+
+			<fieldset>
+				<h:form>
+					<h:commandButton id="continueCommand" action="continueCommand"
+						type="submit" value="Continuer la commande" style="font:bold;"
+						styleClass="none;" />
+					<h:commandButton id="continuePurchase" action="continuePurchase"
+						type="submit" value="Revenir à vos achats" style="font:bold;"
+						styleClass="none;" />
+				</h:form>
+			</fieldset>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>
+

@@ -4,24 +4,20 @@ import java.io.Serializable;
 
 public class Address implements Serializable {
   private static final long serialVersionUID = -3670236004668771220L;
-  long id;
+  private long id;
   // all string because we will not do any arithmetic computations on them
-  String num;
-  String street;
-  String city;
-  String postalCode;
-  String country;
+  private String num;
+  private String street;
+  private String city;
+  private String postalCode;
+  private String country;
 
   public Address() {
   }
 
   public Address(long id, String num, String street, String city,
       String postalCode, String country) {
-    this.id = id;
-    this.num = num;
-    this.street = street;
-    this.city = city;
-    this.postalCode = postalCode;
+    this(id, num, street, city, postalCode);
     this.country = country;
   }
 
@@ -32,6 +28,7 @@ public class Address implements Serializable {
     this.street = street;
     this.city = city;
     this.postalCode = postalCode;
+    country = "France";
   }
 
   public long getId() {
@@ -89,8 +86,11 @@ public class Address implements Serializable {
         + country + "]";
   }
 
-  public String formattedString() {
+  public String getFormattedString() {
     return num + " " + street + " \n" + postalCode + " " + city + " " + country;
+  }
+
+  public void setFormattedString() {
   }
 
   @Override

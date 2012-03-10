@@ -10,12 +10,14 @@
 
 	<on-start>
 		<evaluate expression="defaultDisplayCartService.init()"></evaluate>
-        <evaluate expression="defaultDisplayProductService.init()"></evaluate>
+        <set name="flowScope.paymentMode" value="'Cheque'" type="java.lang.String" />
+        <set name="flowScope.cbType" value="'visa'" type="java.lang.String" />
+        <!-- <evaluate expression="defaultDisplayProductService.init()"></evaluate>
 		<evaluate expression="defaultDisplayProductService.getAllProduct()" result="flowScope.listProduct" result-type="dataModel"></evaluate>
-		<!-- faire un test de role (client, utilisateur) est stocké ds une var a part pour retest dans la page-->
+		faire un test de role (client, utilisateur) est stocké ds une var a part pour retest dans la page-->
 	</on-start>
 	
-    <view-state id="listProduct" view="listProduct.xhtml">
+    <!--<view-state id="listProduct" view="listProduct.xhtml">
 		<transition on="addCart" to="addCart">
 			<set name="Product" value="flowScope.listProduct.selectedRow" />
 		</transition>
@@ -24,11 +26,21 @@
 		</transition>
     </view-state>
     
-    <view-state id="cart" view="cart.xhtml">
+    <view-state id="cart" view="cart.xhtml" model="DisplayProduct">
+        <binder>
+    		<binding property="ssid" required="true"/>
+    		<binding property="lastName" required="true"/>
+    		<binding property="firstName" required="true"/>
+    		<binding property="birthday" required="true"/>
+    		<binding property="death" required="true"/>
+    	</binder>
     	<transition on="continue" to="listProduct">
 			<evaluate expression="defaultDisplayProductService.getAllProduct()" result="flowScope.listProduct" result-type="dataModel"></evaluate>
     	</transition>
     	<transition on="delCart" to="delCart">
+			<set name="DisplayProduct" value="flowScope.listDisplayProduct.selectedRow" />
+    	</transition>
+    	<transition on="updateCart" to="updateCart">
 			<set name="DisplayProduct" value="flowScope.listDisplayProduct.selectedRow" />
     	</transition>
     	<transition on="viewCart" to="cart">
@@ -48,6 +60,14 @@
     	<transition on="success" to="cart">
     		<evaluate expression="defaultDisplayCartService.getAllProduct()" result="flowScope.listDisplayProduct" result-type="dataModel"></evaluate>
     	</transition>
-    </action-state>
+    </action-state>-->
+    <view-state id="paymentMode" view="payment_choice.xhtml">
+    	<transition on="back" to="" />
+    	<transition on="continue" to="mode" />
+    </view-state>
     
+	<view-state id="mode" view="paymentMode.xhtml">
+		<transition on="back" to="paymentMode" />
+    	<transition on="continue" to="" />
+	</view-state>
 </flow>

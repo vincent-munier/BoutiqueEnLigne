@@ -1,4 +1,4 @@
-package fr.umlv.m2.jee.persistence.address;
+package fr.umlv.m2.jee.persistence.payment;
 
 import java.io.Serializable;
 

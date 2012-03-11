@@ -10,6 +10,12 @@
 
 	<on-start>
 		<evaluate expression="defaultDisplayCartService.init()"></evaluate>
+		<set name="flowScope.paymentMode" value="'Cheque'" type="java.lang.String" />
+		<set name="flowScope.cbType" value="'visa'" type="java.lang.String" />
+
+		<set name="flowScope.selectedAddress" value="'default Adress'"
+			type="java.lang.String" />
+
 		<evaluate expression="defaultDisplayProductService.init()"></evaluate>
 		<evaluate expression="defaultDisplayProductService.getAllProduct()"
 			result="flowScope.listProduct" result-type="dataModel"></evaluate>
@@ -18,6 +24,7 @@
 	</on-start>
 
 	<view-state id="listProduct" view="listProduct.xhtml">
+
 		<transition on="addCart" to="addCart">
 			<set name="Product" value="flowScope.listProduct.selectedRow" />
 		</transition>
@@ -25,21 +32,40 @@
 			<evaluate expression="defaultDisplayCartService.getAllProduct()"
 				result="flowScope.listDisplayProduct" result-type="dataModel"></evaluate>
 		</transition>
+
+		<transition on="testPayment" to="paymentMode" />
+
 	</view-state>
 
+
+	<view-state id="newAddress" view="command/newAddress.xhtml">
+		<transition on="back" to="command">
+			<evaluate expression="defaultDisplayAddressService.getAddressesByClientId(0)"
+				result="flowScope.listAddresses" result-type="dataModel"></evaluate>
+		</transition>
+	</view-state>
 
 	<view-state id="command" view="command/availableAddress.xhtml">
 		<transition on="viewCart" to="cart">
 			<evaluate expression="defaultDisplayCartService.getAllProduct()"
 				result="flowScope.listDisplayProduct" result-type="dataModel"></evaluate>
 		</transition>
-		<transition on="continuePurchase" to="listProduct">
+		<transition on="backPurchase" to="listProduct">
 			<evaluate expression="defaultDisplayProductService.getAllProduct()"
 				result="flowScope.listProduct" result-type="dataModel"></evaluate>
 		</transition>
+		<transition on="continueCommand" to="newAddress" />
+
 	</view-state>
 
-	<view-state id="cart" view="cart.xhtml">
+	<view-state id="cart" view="cart.xhtml" model="DisplayProduct">
+		<binder>
+			<binding property="ssid" required="true" />
+			<binding property="lastName" required="true" />
+			<binding property="firstName" required="true" />
+			<binding property="birthday" required="true" />
+			<binding property="death" required="true" />
+		</binder>
 		<transition on="continue" to="listProduct">
 			<evaluate expression="defaultDisplayProductService.getAllProduct()"
 				result="flowScope.listProduct" result-type="dataModel"></evaluate>
@@ -49,6 +75,9 @@
 				result="flowScope.listAddresses" result-type="dataModel"></evaluate>
 		</transition>
 		<transition on="delCart" to="delCart">
+			<set name="DisplayProduct" value="flowScope.listDisplayProduct.selectedRow" />
+		</transition>
+		<transition on="updateCart" to="updateCart">
 			<set name="DisplayProduct" value="flowScope.listDisplayProduct.selectedRow" />
 		</transition>
 		<transition on="viewCart" to="cart">
@@ -71,6 +100,15 @@
 			<evaluate expression="defaultDisplayCartService.getAllProduct()"
 				result="flowScope.listDisplayProduct" result-type="dataModel"></evaluate>
 		</transition>
-	</action-state>
 
+	</action-state>
+	<view-state id="paymentMode" view="payment_choice.xhtml">
+		<transition on="back" to="" />
+		<transition on="continue" to="mode" />
+	</view-state>
+
+	<view-state id="mode" view="paymentMode.xhtml">
+		<transition on="back" to="paymentMode" />
+		<transition on="continue" to="" />
+	</view-state>
 </flow>

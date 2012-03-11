@@ -27,7 +27,6 @@ public class DefaultDisplayAddressService implements IDisplayAddressService {
     // la variable d'instance 'addresses' et init() seront supprimés.
     // on devra faire une requête pour récupèrer la liste des adresses par id de
     // client.
-
     return addresses;
   }
 

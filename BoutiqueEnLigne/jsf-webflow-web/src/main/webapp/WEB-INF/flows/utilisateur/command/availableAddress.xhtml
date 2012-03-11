@@ -10,40 +10,45 @@
 	xmlns:a4j="http://richfaces.org/a4j"
 	xmlns:rich="http://richfaces.org/rich"
 	xmlns:spring="http://www.springframework.org/tags">
-
 <body>
+
 	<ui:composition template="../layout.xhtml">
 
 		<ui:define name="content">
-			<h:form id="listAddresses">
-				<table id="availableAddresses">
+			<fieldset>
 
-					<tr>
-						<td><rich:dataTable value="#{flowScope.listAddresses}"
-								var="adr" border="1" cellspacing="4" width="100%" id="table"
-								rows="20">
-								<rich:column>
-									<f:facet name="header">
-										<f:verbatim>Adresses disponibles</f:verbatim>
-									</f:facet>
-									<input type="radio" name="addresses" value="adrRadio" />
-									<h:outputText value="#{adr.formattedString}" />
-								</rich:column>
-							</rich:dataTable> <rich:datascroller for="table" align="center" maxPages="10"
-								renderIfSinglePage="false"></rich:datascroller></td>
-						<td><input type="radio" name="addresses" value="adrRadio" />
-							Saisir une autre adresse de livraison</td>
-					</tr>
-				</table>
-			</h:form>
+				<h:form id="listAddressesForm">
+					<table id="availableAddresses">
+						<tr>
+							<td><rich:dataTable value="#{flowScope.listAddresses}"
+									var="adr" border="1" cellspacing="4" width="100%" id="table"
+									rows="20">
+									<rich:column selectionMode="single" />
+									<rich:column>
+										<f:facet name="header">
+											<f:verbatim>Adresses disponibles</f:verbatim>
+										</f:facet>
+
+										<!-- <input type="radio" name="addresses" value="adrRadio" /> -->
+										<h:outputText value="#{adr.formattedString}" />
+									</rich:column>
+								</rich:dataTable> <rich:datascroller for="table" align="center" maxPages="10"
+									renderIfSinglePage="false"></rich:datascroller></td>
+							<td><input type="radio" name="addresses" value="adrRadio" />
+								Saisir une autre adresse de livraison</td>
+						</tr>
+					</table>
+
+				</h:form>
+			</fieldset>
 
 			<fieldset>
 				<h:form>
+					<h:commandButton id="backPurchase" action="backPurchase"
+						type="submit" value="Revenir à vos achats" style="font:bold;"
+						styleClass="none;" />
 					<h:commandButton id="continueCommand" action="continueCommand"
 						type="submit" value="Continuer la commande" style="font:bold;"
-						styleClass="none;" />
-					<h:commandButton id="continuePurchase" action="continuePurchase"
-						type="submit" value="Revenir à vos achats" style="font:bold;"
 						styleClass="none;" />
 				</h:form>
 			</fieldset>

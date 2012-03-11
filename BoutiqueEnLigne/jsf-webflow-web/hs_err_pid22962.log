@@ -1,0 +1,638 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0xb4a3c25f, pid=22962, tid=3078814576
+#
+# JRE version: 7.0_02-b13
+# Java VM: Java HotSpot(TM) Server VM (22.0-b10 mixed mode linux-x86 )
+# Problematic frame:
+# J  com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next()I
+#
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+# If you would like to submit a bug report, please visit:
+#   http://bugreport.sun.com/bugreport/crash.jsp
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x09038c00):  JavaThread "main" [_thread_in_Java, id=22965, stack(0xb77df000,0xb7830000)]
+
+siginfo:si_signo=SIGSEGV: si_errno=0, si_code=128 (), si_addr=0x00000000
+
+Registers:
+EAX=0xaad03130, EBX=0x91aaac30, ECX=0xaad03130, EDX=0x00000000
+ESP=0xb782da60, EBP=0xaad03130, ESI=0xaad03130, EDI=0xaad03ec8
+EIP=0xb4a3c25f, EFLAGS=0x00010246, CR2=0x00000010
+
+Top of Stack: (sp=0xb782da60)
+0xb782da60:   00000019 b1bb3e60 aad039f8 91ab39f0
+0xb782da70:   09038c00 aacf54f8 aad03ec8 aad03130
+0xb782da80:   00000000 00000004 91ab3590 91ab39f0
+0xb782da90:   aad039f8 b4a3b5ac aad03130 b4955e0c
+0xb782daa0:   00000000 b782daa4 00000001 aad03130
+0xb782dab0:   91aabab0 91ba38d4 91aa44a0 00000000
+0xb782dac0:   b782dad0 b782dafc b782dafc b47e2af9
+0xb782dad0:   00000001 aad03130 aad03130 b782dadc 
+
+Instructions: (pc=0xb4a3c25f)
+0xb4a3c23f:   8b 58 04 81 fb 88 af aa 91 74 1e 81 fb 30 ac aa
+0xb4a3c24f:   91 0f 85 ad 18 00 00 8b 6c 24 1c 8b cd 66 66 90
+0xb4a3c25f:   e8 00 3c 00 00 8b dd eb 0e 8b 6c 24 1c 8b cd 90
+0xb4a3c26f:   e8 6c ff dc ff 8b dd 88 43 70 8b 6c 24 08 8b 4d 
+
+Register to memory mapping:
+
+EAX=0xaad03130 is an oop
+com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl 
+ - klass: 'com/sun/org/apache/xerces/internal/impl/XMLDocumentScannerImpl'
+EBX=0x91aaac30 is an oop
+{instance class} 
+ - klass: {other class}
+ECX=0xaad03130 is an oop
+com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl 
+ - klass: 'com/sun/org/apache/xerces/internal/impl/XMLDocumentScannerImpl'
+EDX=0x00000000 is an unknown value
+ESP=0xb782da60 is pointing into the stack for thread: 0x09038c00
+EBP=0xaad03130 is an oop
+com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl 
+ - klass: 'com/sun/org/apache/xerces/internal/impl/XMLDocumentScannerImpl'
+ESI=0xaad03130 is an oop
+com.sun.org.apache.xerces.internal.impl.XMLDocumentScannerImpl 
+ - klass: 'com/sun/org/apache/xerces/internal/impl/XMLDocumentScannerImpl'
+EDI=0xaad03ec8 is an oop
+com.sun.org.apache.xerces.internal.util.XMLStringBuffer 
+ - klass: 'com/sun/org/apache/xerces/internal/util/XMLStringBuffer'
+
+
+Stack: [0xb77df000,0xb7830000],  sp=0xb782da60,  free space=314k
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+J  com.sun.org.apache.xerces.internal.impl.XMLDocumentFragmentScannerImpl$FragmentContentDriver.next()I
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+  0x8f1b6000 JavaThread "Timer-0" daemon [_thread_blocked, id=23093, stack(0x8f47e000,0x8f4cf000)]
+  0x8f865800 JavaThread "3351563@qtp-10331249-1" [_thread_blocked, id=23088, stack(0x8f9e8000,0x8fa39000)]
+  0x8f871400 JavaThread "26126305@qtp-10331249-0" [_thread_blocked, id=23087, stack(0x8f997000,0x8f9e8000)]
+  0x8fd6d000 JavaThread "resolver-5" daemon [_thread_blocked, id=23007, stack(0x8fa39000,0x8fa8a000)]
+  0x8fd3e400 JavaThread "resolver-4" daemon [_thread_blocked, id=23006, stack(0x8fc0d000,0x8fc5e000)]
+  0x8fd3d400 JavaThread "resolver-3" daemon [_thread_blocked, id=23005, stack(0x8fc5e000,0x8fcaf000)]
+  0x8fd4a000 JavaThread "resolver-2" daemon [_thread_blocked, id=23004, stack(0x8fcaf000,0x8fd00000)]
+  0x8fd3f400 JavaThread "resolver-1" daemon [_thread_blocked, id=23003, stack(0x8fa8a000,0x8fadb000)]
+  0x900cf800 JavaThread "process reaper" daemon [_thread_blocked, id=22992, stack(0x9040a000,0x90419000)]
+  0x902bfc00 JavaThread "com.google.inject.internal.util.$Finalizer" daemon [_thread_blocked, id=22985, stack(0x90419000,0x9046a000)]
+  0x0912d800 JavaThread "Service Thread" daemon [_thread_blocked, id=22978, stack(0x90558000,0x905a9000)]
+  0x09123000 JavaThread "C2 CompilerThread1" daemon [_thread_blocked, id=22977, stack(0x905a9000,0x9062a000)]
+  0x09121000 JavaThread "C2 CompilerThread0" daemon [_thread_blocked, id=22976, stack(0x9062a000,0x906ab000)]
+  0x0911f400 JavaThread "Signal Dispatcher" daemon [_thread_blocked, id=22975, stack(0x906ab000,0x906fc000)]
+  0x090e4800 JavaThread "Finalizer" daemon [_thread_blocked, id=22974, stack(0x908fc000,0x9094d000)]
+  0x090e2800 JavaThread "Reference Handler" daemon [_thread_blocked, id=22973, stack(0x9094d000,0x9099e000)]
+=>0x09038c00 JavaThread "main" [_thread_in_Java, id=22965, stack(0xb77df000,0xb7830000)]
+
+Other Threads:
+  0x090dd400 VMThread [stack: 0x9099e000,0x90a1f000] [id=22970]
+  0x0912f400 WatcherThread [stack: 0x904d7000,0x90558000] [id=22979]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap
+ PSYoungGen      total 137024K, used 128068K [0xa9f10000, 0xb4710000, 0xb4710000)
+  eden space 128832K, 99% used [0xa9f10000,0xb1c21110,0xb1ce0000)
+  from space 8192K, 0% used [0xb1ce0000,0xb1ce0000,0xb24e0000)
+  to   space 13376K, 0% used [0xb3a00000,0xb3a00000,0xb4710000)
+ PSOldGen        total 43136K, used 24319K [0x94f10000, 0x97930000, 0xa9f10000)
+  object space 43136K, 56% used [0x94f10000,0x966cfff0,0x97930000)
+ PSPermGen       total 38272K, used 20109K [0x90f10000, 0x93470000, 0x94f10000)
+  object space 38272K, 52% used [0x90f10000,0x922b3470,0x93470000)
+
+Code Cache  [0xb47df000, 0xb4a47000, 0xb77df000)
+ total_blobs=968 nmethods=823 adapters=97 free_code_cache=46741Kb largest_free_block=47808960
+
+Dynamic libraries:
+00110000-00116000 r-xp 00000000 08:06 673155     /lib/i386-linux-gnu/libnss_compat-2.13.so
+00116000-00117000 r--p 00005000 08:06 673155     /lib/i386-linux-gnu/libnss_compat-2.13.so
+00117000-00118000 rw-p 00006000 08:06 673155     /lib/i386-linux-gnu/libnss_compat-2.13.so
+0011a000-0012f000 r-xp 00000000 08:06 673165     /lib/i386-linux-gnu/libpthread-2.13.so
+0012f000-00130000 r--p 00015000 08:06 673165     /lib/i386-linux-gnu/libpthread-2.13.so
+00130000-00131000 rw-p 00016000 08:06 673165     /lib/i386-linux-gnu/libpthread-2.13.so
+00131000-00133000 rw-p 00000000 00:00 0 
+00133000-00146000 r-xp 00000000 08:06 673154     /lib/i386-linux-gnu/libnsl-2.13.so
+00146000-00147000 r--p 00012000 08:06 673154     /lib/i386-linux-gnu/libnsl-2.13.so
+00147000-00148000 rw-p 00013000 08:06 673154     /lib/i386-linux-gnu/libnsl-2.13.so
+00148000-0014a000 rw-p 00000000 00:00 0 
+0014a000-00158000 r-xp 00000000 08:07 572464     /home/vincent/jre1.7.0_02/lib/i386/libnio.so
+00158000-00159000 rw-p 0000e000 08:07 572464     /home/vincent/jre1.7.0_02/lib/i386/libnio.so
+00159000-001df000 r-xp 00000000 08:07 572435     /home/vincent/jre1.7.0_02/lib/i386/libawt.so
+001df000-001e6000 rw-p 00086000 08:07 572435     /home/vincent/jre1.7.0_02/lib/i386/libawt.so
+001e6000-0020a000 rw-p 00000000 00:00 0 
+0020a000-00217000 r-xp 00000000 08:06 586434     /usr/lib/i386-linux-gnu/libXext.so.6.4.0
+00217000-00218000 r--p 0000c000 08:06 586434     /usr/lib/i386-linux-gnu/libXext.so.6.4.0
+00218000-00219000 rw-p 0000d000 08:06 586434     /usr/lib/i386-linux-gnu/libXext.so.6.4.0
+0024d000-00257000 r-xp 00000000 08:06 673157     /lib/i386-linux-gnu/libnss_files-2.13.so
+00257000-00258000 r--p 00009000 08:06 673157     /lib/i386-linux-gnu/libnss_files-2.13.so
+00258000-00259000 rw-p 0000a000 08:06 673157     /lib/i386-linux-gnu/libnss_files-2.13.so
+002b0000-002b4000 r-xp 00000000 08:06 493381     /usr/lib/i386-linux-gnu/libXdmcp.so.6.0.0
+002b4000-002b5000 r--p 00003000 08:06 493381     /usr/lib/i386-linux-gnu/libXdmcp.so.6.0.0
+002b5000-002b6000 rw-p 00004000 08:06 493381     /usr/lib/i386-linux-gnu/libXdmcp.so.6.0.0
+002c1000-002ca000 r-xp 00000000 08:06 673160     /lib/i386-linux-gnu/libnss_nis-2.13.so
+002ca000-002cb000 r--p 00008000 08:06 673160     /lib/i386-linux-gnu/libnss_nis-2.13.so
+002cb000-002cc000 rw-p 00009000 08:06 673160     /lib/i386-linux-gnu/libnss_nis-2.13.so
+003c5000-00521000 r-xp 00000000 08:06 673147     /lib/i386-linux-gnu/libc-2.13.so
+00521000-00523000 r--p 0015c000 08:06 673147     /lib/i386-linux-gnu/libc-2.13.so
+00523000-00524000 rw-p 0015e000 08:06 673147     /lib/i386-linux-gnu/libc-2.13.so
+00524000-00527000 rw-p 00000000 00:00 0 
+00581000-005ca000 r-xp 00000000 08:07 449686     /home/vincent/jre1.7.0_02/lib/i386/xawt/libmawt.so
+005ca000-005cc000 rw-p 00048000 08:07 449686     /home/vincent/jre1.7.0_02/lib/i386/xawt/libmawt.so
+005cc000-005cd000 rw-p 00000000 00:00 0 
+005e0000-005ec000 r-xp 00000000 08:07 572436     /home/vincent/jre1.7.0_02/lib/i386/libverify.so
+005ec000-005ed000 rw-p 0000c000 08:07 572436     /home/vincent/jre1.7.0_02/lib/i386/libverify.so
+005ed000-00703000 r-xp 00000000 08:06 34173      /usr/lib/i386-linux-gnu/libX11.so.6.3.0
+00703000-00704000 ---p 00116000 08:06 34173      /usr/lib/i386-linux-gnu/libX11.so.6.3.0
+00704000-00705000 r--p 00116000 08:06 34173      /usr/lib/i386-linux-gnu/libX11.so.6.3.0
+00705000-00707000 rw-p 00117000 08:06 34173      /usr/lib/i386-linux-gnu/libX11.so.6.3.0
+00707000-00708000 rw-p 00000000 00:00 0 
+00771000-00784000 r-xp 00000000 08:07 400628     /home/vincent/jre1.7.0_02/lib/i386/jli/libjli.so
+00784000-00785000 rw-p 00012000 08:07 400628     /home/vincent/jre1.7.0_02/lib/i386/jli/libjli.so
+00839000-0083b000 r-xp 00000000 08:06 493377     /usr/lib/i386-linux-gnu/libXau.so.6.0.0
+0083b000-0083c000 r--p 00001000 08:06 493377     /usr/lib/i386-linux-gnu/libXau.so.6.0.0
+0083c000-0083d000 rw-p 00002000 08:06 493377     /usr/lib/i386-linux-gnu/libXau.so.6.0.0
+00911000-00915000 r-xp 00000000 08:06 196829     /usr/lib/libXtst.so.6.1.0
+00915000-00916000 r--p 00003000 08:06 196829     /usr/lib/libXtst.so.6.1.0
+00916000-00917000 rw-p 00004000 08:06 196829     /usr/lib/libXtst.so.6.1.0
+00934000-0093c000 r-xp 00000000 08:06 206257     /usr/lib/i386-linux-gnu/libXrender.so.1.3.0
+0093c000-0093d000 r--p 00007000 08:06 206257     /usr/lib/i386-linux-gnu/libXrender.so.1.3.0
+0093d000-0093e000 rw-p 00008000 08:06 206257     /usr/lib/i386-linux-gnu/libXrender.so.1.3.0
+0096e000-0098a000 r-xp 00000000 08:06 667835     /lib/i386-linux-gnu/ld-2.13.so
+0098a000-0098b000 r--p 0001b000 08:06 667835     /lib/i386-linux-gnu/ld-2.13.so
+0098b000-0098c000 rw-p 0001c000 08:06 667835     /lib/i386-linux-gnu/ld-2.13.so
+00a06000-00a1a000 r-xp 00000000 08:07 572460     /home/vincent/jre1.7.0_02/lib/i386/libnet.so
+00a1a000-00a1b000 rw-p 00014000 08:07 572460     /home/vincent/jre1.7.0_02/lib/i386/libnet.so
+00acd000-00acf000 r-xp 00000000 08:06 673151     /lib/i386-linux-gnu/libdl-2.13.so
+00acf000-00ad0000 r--p 00001000 08:06 673151     /lib/i386-linux-gnu/libdl-2.13.so
+00ad0000-00ad1000 rw-p 00002000 08:06 673151     /lib/i386-linux-gnu/libdl-2.13.so
+00adb000-00ae8000 r-xp 00000000 08:06 474803     /usr/lib/i386-linux-gnu/libXi.so.6.1.0
+00ae8000-00ae9000 r--p 0000c000 08:06 474803     /usr/lib/i386-linux-gnu/libXi.so.6.1.0
+00ae9000-00aea000 rw-p 0000d000 08:06 474803     /usr/lib/i386-linux-gnu/libXi.so.6.1.0
+00b3b000-00b42000 r-xp 00000000 08:06 673167     /lib/i386-linux-gnu/librt-2.13.so
+00b42000-00b43000 r--p 00006000 08:06 673167     /lib/i386-linux-gnu/librt-2.13.so
+00b43000-00b44000 rw-p 00007000 08:06 673167     /lib/i386-linux-gnu/librt-2.13.so
+00c40000-00c57000 r-xp 00000000 08:07 572472     /home/vincent/jre1.7.0_02/lib/i386/libzip.so
+00c57000-00c58000 rw-p 00017000 08:07 572472     /home/vincent/jre1.7.0_02/lib/i386/libzip.so
+00dd8000-00dfb000 r-xp 00000000 08:07 572449     /home/vincent/jre1.7.0_02/lib/i386/libjava.so
+00dfb000-00dfc000 rw-p 00023000 08:07 572449     /home/vincent/jre1.7.0_02/lib/i386/libjava.so
+00eaf000-00ec6000 r-xp 00000000 08:06 493390     /usr/lib/i386-linux-gnu/libxcb.so.1.1.0
+00ec6000-00ec7000 r--p 00016000 08:06 493390     /usr/lib/i386-linux-gnu/libxcb.so.1.1.0
+00ec7000-00ec8000 rw-p 00017000 08:06 493390     /usr/lib/i386-linux-gnu/libxcb.so.1.1.0
+00f28000-00f4c000 r-xp 00000000 08:06 673152     /lib/i386-linux-gnu/libm-2.13.so
+00f4c000-00f4d000 r--p 00023000 08:06 673152     /lib/i386-linux-gnu/libm-2.13.so
+00f4d000-00f4e000 rw-p 00024000 08:06 673152     /lib/i386-linux-gnu/libm-2.13.so
+00fc6000-00fc7000 r-xp 00000000 00:00 0          [vdso]
+00fc7000-01735000 r-xp 00000000 08:07 408853     /home/vincent/jre1.7.0_02/lib/i386/server/libjvm.so
+01735000-01784000 rw-p 0076d000 08:07 408853     /home/vincent/jre1.7.0_02/lib/i386/server/libjvm.so
+01784000-01ba3000 rw-p 00000000 00:00 0 
+08048000-08049000 r-xp 00000000 08:07 948769     /home/vincent/jre1.7.0_02/bin/java
+08049000-0804a000 rw-p 00000000 08:07 948769     /home/vincent/jre1.7.0_02/bin/java
+09033000-0a999000 rw-p 00000000 00:00 0          [heap]
+8d700000-8d7f6000 rw-p 00000000 00:00 0 
+8d7f6000-8d800000 ---p 00000000 00:00 0 
+8d900000-8d9fe000 rw-p 00000000 00:00 0 
+8d9fe000-8da00000 ---p 00000000 00:00 0 
+8db00000-8dbf5000 rw-p 00000000 00:00 0 
+8dbf5000-8dc00000 ---p 00000000 00:00 0 
+8dc00000-8dcfe000 rw-p 00000000 00:00 0 
+8dcfe000-8dd00000 ---p 00000000 00:00 0 
+8dd5e000-8dd61000 ---p 00000000 00:00 0 
+8dd61000-8ddaf000 rw-p 00000000 00:00 0 
+8ddaf000-8ddb2000 ---p 00000000 00:00 0 
+8ddb2000-8de00000 rw-p 00000000 00:00 0 
+8de00000-8e000000 rw-p 00000000 00:00 0 
+8e000000-8e200000 rw-p 00000000 00:00 0 
+8e200000-8e400000 rw-p 00000000 00:00 0 
+8e400000-8e600000 rw-p 00000000 00:00 0 
+8e600000-8e6fd000 rw-p 00000000 00:00 0 
+8e6fd000-8e700000 ---p 00000000 00:00 0 
+8e700000-8e800000 rw-p 00000000 00:00 0 
+8e800000-8e900000 rw-p 00000000 00:00 0 
+8ea00000-8ebfb000 rw-p 00000000 00:00 0 
+8ebfb000-8ec00000 ---p 00000000 00:00 0 
+8ec00000-8ed00000 rw-p 00000000 00:00 0 
+8ed4d000-8ed50000 ---p 00000000 00:00 0 
+8ed50000-8ed9e000 rw-p 00000000 00:00 0 
+8ed9e000-8eda1000 ---p 00000000 00:00 0 
+8eda1000-8edef000 rw-p 00000000 00:00 0 
+8ef00000-8effb000 rw-p 00000000 00:00 0 
+8effb000-8f000000 ---p 00000000 00:00 0 
+8f100000-8f1fd000 rw-p 00000000 00:00 0 
+8f1fd000-8f200000 ---p 00000000 00:00 0 
+8f200000-8f2f8000 rw-p 00000000 00:00 0 
+8f2f8000-8f300000 ---p 00000000 00:00 0 
+8f300000-8f3fc000 rw-p 00000000 00:00 0 
+8f3fc000-8f400000 ---p 00000000 00:00 0 
+8f42a000-8f42d000 ---p 00000000 00:00 0 
+8f42d000-8f47b000 rw-p 00000000 00:00 0 
+8f47b000-8f47e000 r--s 000f4000 08:07 433931     /home/vincent/jre1.7.0_02/lib/ext/localedata.jar
+8f47e000-8f481000 ---p 00000000 00:00 0 
+8f481000-8f4cf000 rw-p 00000000 00:00 0 
+8f4cf000-8f4d1000 r--s 00003000 08:07 1058919    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/jsf-webflow-persistence-0.0.1-SNAPSHOT.jar
+8f4d1000-8f4d4000 r--s 00015000 08:07 1058918    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/commons-pool-1.5.4.jar
+8f4d4000-8f4d7000 r--s 0000a000 08:07 1058917    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/persistence-api-1.0.jar
+8f4d7000-8f4ec000 r--s 0016a000 08:07 1058916    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/richfaces-impl-3.3.3.Final.jar
+8f4ec000-8f51d000 r--s 002c0000 08:07 1058915    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/hibernate-core-3.6.0.Final.jar
+8f51d000-8f527000 r--s 00057000 08:07 1058914    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/spring-web-3.0.5.RELEASE.jar
+8f527000-8f528000 r--s 00002000 08:07 1058913    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/slf4j-log4j12-1.5.8.jar
+8f528000-8f540000 r--s 00107000 08:07 1058912    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/spring-js-2.0.9.RELEASE.jar
+8f540000-8f542000 r--s 00001000 08:07 1058911    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/jsf-webflow-service-0.0.1-SNAPSHOT.jar
+8f542000-8f54c000 r--s 00121000 08:07 1058910    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/h2-1.2.140.jar
+8f54c000-8f54e000 r--s 00011000 08:07 1058909    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/hamcrest-core-1.1.jar
+8f54e000-8f553000 r--s 00014000 08:07 1058908    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/hibernate-jpa-2.0-api-1.0.0.Final.jar
+8f553000-8f555000 r--s 00004000 08:07 1058907    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/jstl-1.1.2.jar
+8f555000-8f558000 r--s 00025000 08:07 1058906    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/commons-dbcp-1.4.jar
+8f558000-8f559000 r--s 0000a000 08:07 1058905    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/asm-3.1.jar
+8f559000-8f55d000 r--s 00026000 08:07 1058904    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/spring-expression-3.0.5.RELEASE.jar
+8f55d000-8f564000 r--s 00043000 08:07 1058903    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/jsf-facelets-1.1.14.jar
+8f564000-8f56a000 r--s 00067000 08:07 1058902    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/antlr-2.7.6.jar
+8f56a000-8f573000 r--s 00092000 08:07 1058901    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/javassist-3.12.0.GA.jar
+8f573000-8f583000 r--s 0007c000 08:07 1058900    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/joda-time-2.1.jar
+8f583000-8f585000 r--s 00005000 08:07 1058899    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/speed4j-0.9.jar
+8f585000-8f5d1000 r--s 003f1000 08:07 1058898    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/richfaces-ui-3.3.3.Final.jar
+8f5d1000-8f5de000 r--s 00072000 08:07 1058897    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/spring-webflow-2.0.9.RELEASE.jar
+8f5de000-8f5e5000 r--s 00037000 08:07 1058896    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/junit-4.10.jar
+8f5e5000-8f5ea000 r--s 00048000 08:07 1058895    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/dom4j-1.6.1.jar
+8f5ea000-8f5fb000 r--s 000ab000 08:07 1058894    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/spring-security-core-2.0.5.RELEASE.jar
+8f5fb000-8f5fc000 r--s 0000c000 08:07 1058893    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/spring-asm-3.0.5.RELEASE.jar
+8f5fc000-8f600000 r--s 00020000 08:07 1058892    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/commons-digester-1.8.1.jar
+8f600000-8f700000 rw-p 00000000 00:00 0 
+8f700000-8f701000 r--s 00002000 08:07 1058891    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/Database-1.0.jar
+8f701000-8f70a000 r--s 0005d000 08:07 1058890    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/hibernate-entitymanager-3.6.0.Final.jar
+8f70a000-8f70c000 r--s 0000a000 08:07 1058889    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/commons-codec-1.3.jar
+8f70c000-8f70f000 r--s 0001a000 08:07 1058888    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/spring-support-2.0.8.jar
+8f70f000-8f710000 r--s 00003000 08:07 1058887    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/jta-1.1.jar
+8f710000-8f712000 r--s 0000d000 08:07 1058886    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/commons-logging-1.1.1.jar
+8f712000-8f71c000 r--s 00055000 08:07 1058885    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/spring-jdbc-3.0.5.RELEASE.jar
+8f71c000-8f724000 r--s 0004a000 08:07 1058884    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/spring-orm-3.0.5.RELEASE.jar
+8f724000-8f728000 r--s 0001f000 08:07 1058883    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/spring-faces-2.0.9.RELEASE.jar
+8f728000-8f731000 r--s 000ca000 08:07 1058882    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/cassandra-thrift-1.0.6.jar
+8f731000-8f73c000 r--s 000b8000 08:07 1058881    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/hector-core-1.0-2.jar
+8f73c000-8f742000 r--s 00021000 08:07 1058880    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/spring-binding-2.0.9.RELEASE.jar
+8f742000-8f74b000 r--s 0005a000 08:07 1058879    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/spring-webmvc-2.5.6.SEC01.jar
+8f74b000-8f74e000 r--s 0000f000 08:07 1058878    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/hibernate-commons-annotations-3.2.0.Final.jar
+8f74e000-8f753000 r--s 00034000 08:07 1058877    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/commons-beanutils-1.8.0.jar
+8f753000-8f756000 r--s 00015000 08:07 1058876    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/spring-context-support-2.5.6.SEC01.jar
+8f756000-8f76e000 r--s 00100000 08:07 1058875    /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/guava-r09.jar
+8f76e000-8f778000 r--s 000c4000 08:07 654470     /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/jsf-impl-1.2_13.jar
+8f778000-8f785000 r--s 0007f000 08:07 654469     /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/commons-collections-3.2.jar
+8f785000-8f786000 r--s 00004000 08:07 654468     /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/spring-security-taglibs-2.0.5.RELEASE.jar
+8f786000-8f78c000 r--s 00025000 08:07 654467     /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/richfaces-api-3.3.3.Final.jar
+8f78c000-8f78e000 r--s 00002000 08:07 654466     /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/uuid-3.2.0.jar
+8f78e000-8f794000 r--s 00043000 08:07 654465     /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/libthrift-0.6.1.jar
+8f794000-8f796000 r--s 00005000 08:07 654464     /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/slf4j-api-1.6.1.jar
+8f796000-8f79d000 r--s 0003e000 08:07 654463     /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/cglib-2.2.jar
+8f79d000-8f7a0000 r--s 0000e000 08:07 654462     /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/spring-security-acl-2.0.5.RELEASE.jar
+8f7a0000-8f7a7000 r--s 00053000 08:07 654461     /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/log4j-1.2.14.jar
+8f7a7000-8f7ad000 r--s 00053000 08:07 654460     /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/jsf-api-1.2_13.jar
+8f7ad000-8f7b6000 r--s 00046000 08:07 654459     /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/spring-aop-3.0.5.RELEASE.jar
+8f7b6000-8f7bf000 r--s 00055000 08:07 654455     /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/spring-core-3.0.5.RELEASE.jar
+8f7bf000-8f7d1000 r--s 00092000 08:07 654454     /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/spring-context-3.0.5.RELEASE.jar
+8f7d1000-8f7dd000 r--s 0007c000 08:07 654453     /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/spring-beans-3.0.5.RELEASE.jar
+8f7dd000-8f800000 r--p 00000000 08:06 611154     /usr/share/locale-langpack/fr/LC_MESSAGES/libc.mo
+8f800000-8f8fe000 rw-p 00000000 00:00 0 
+8f8fe000-8f900000 ---p 00000000 00:00 0 
+8f901000-8f905000 r--s 0003c000 08:07 654458     /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/commons-lang-2.4.jar
+8f905000-8f906000 r--s 00001000 08:07 654457     /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/slf4j-simple-1.6.2.jar
+8f906000-8f908000 r--s 00000000 08:07 654456     /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/aopalliance-1.0.jar
+8f908000-8f90c000 r--s 00028000 08:07 654452     /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/WebService-1.0.jar
+8f90c000-8f90f000 r--s 0001e000 08:07 654451     /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/jboss-el-2.0.1.GA.jar
+8f90f000-8f916000 r--s 00032000 08:07 654450     /home/vincent/workspace/BoutiqueEnLigne/BoutiqueEnLigne/jsf-webflow-web/target/work/webapp/WEB-INF/lib/spring-tx-3.0.5.RELEASE.jar
+8f916000-8f919000 r--s 00018000 08:07 157618     /home/vincent/jre1.7.0_02/lib/jce.jar
+8f919000-8f91b000 r--s 00003000 08:07 41173      /home/vincent/.m2/repository/org/mortbay/jetty/start/6.1.16/start-6.1.16.jar
+8f91b000-8f91c000 r--s 00002000 08:07 204777     /home/vincent/.m2/repository/org/apache/geronimo/specs/geronimo-annotation_1.0_spec/1.0/geronimo-annotation_1.0_spec-1.0.jar
+8f91c000-8f91e000 r--s 00002000 08:07 24897      /home/vincent/.m2/repository/org/mortbay/jetty/jetty-annotations/6.1.16/jetty-annotations-6.1.16.jar
+8f91e000-8f92d000 r--s 000ee000 08:07 188079     /home/vincent/.m2/repository/ant/ant/1.6.5/ant-1.6.5.jar
+8f92d000-8f93e000 r--s 000ea000 08:07 8403       /home/vincent/.m2/repository/org/mortbay/jetty/jsp-2.1-glassfish/9.1.1.B51.25.p1/jsp-2.1-glassfish-9.1.1.B51.25.p1.jar
+8f93e000-8f941000 r--s 0001e000 08:07 2199369    /home/vincent/.m2/repository/org/mortbay/jetty/jsp-api-2.1-glassfish/9.1.1.B51.25.p1/jsp-api-2.1-glassfish-9.1.1.B51.25.p1.jar
+8f941000-8f964000 r--s 00344000 08:07 163597     /home/vincent/.m2/repository/org/eclipse/jdt/core/3.1.1/core-3.1.1.jar
+8f964000-8f966000 r--s 00000000 08:07 2199368    /home/vincent/.m2/repository/org/mortbay/jetty/jsp-2.1-jetty/6.1.16/jsp-2.1-jetty-6.1.16.jar
+8f966000-8f968000 r--s 00007000 08:07 2215709    /home/vincent/.m2/repository/org/mortbay/jetty/jetty-management/6.1.16/jetty-management-6.1.16.jar
+8f968000-8f96a000 r--s 0000e000 08:07 2199367    /home/vincent/.m2/repository/javax/activation/activation/1.1/activation-1.1.jar
+8f96a000-8f970000 r--s 00059000 08:07 2125781    /home/vincent/.m2/repository/javax/mail/mail/1.4/mail-1.4.jar
+8f970000-8f971000 r--s 00006000 08:07 2215708    /home/vincent/.m2/repository/org/mortbay/jetty/jetty-naming/6.1.16/jetty-naming-6.1.16.jar
+8f971000-8f973000 r--s 00002000 08:07 163596     /home/vincent/.m2/repository/geronimo-spec/geronimo-spec-jta/1.0.1B-rc4/geronimo-spec-jta-1.0.1B-rc4.jar
+8f973000-8f975000 r--s 0000e000 08:07 2199366    /home/vincent/.m2/repository/org/mortbay/jetty/jetty-plus/6.1.16/jetty-plus-6.1.16.jar
+8f975000-8f977000 r--s 00004000 08:07 1144652    /home/vincent/.m2/repository/org/apache/maven/maven-plugin-tools-api/2.0/maven-plugin-tools-api-2.0.jar
+8f977000-8f97a000 r--s 0001b000 08:07 915739     /home/vincent/.m2/repository/junit/junit/3.8.2/junit-3.8.2.jar
+8f97a000-8f97d000 r--s 00027000 08:07 662276     /home/vincent/.m2/repository/org/codehaus/plexus/plexus-utils/1.1/plexus-utils-1.1.jar
+8f97d000-8f97f000 r--s 0001f000 08:07 2076852    /home/vincent/.m2/repository/org/mortbay/jetty/servlet-api/2.5-20081211/servlet-api-2.5-20081211.jar
+8f97f000-8f983000 r--s 00027000 08:07 842205     /home/vincent/.m2/repository/org/mortbay/jetty/jetty-util/6.1.16/jetty-util-6.1.16.jar
+8f983000-8f98a000 r--s 00079000 08:07 834003     /home/vincent/.m2/repository/org/mortbay/jetty/jetty/6.1.16/jetty-6.1.16.jar
+8f98a000-8f98c000 r--s 0000a000 08:07 2028370    /home/vincent/.m2/repository/org/mortbay/jetty/maven-jetty-plugin/6.1.16/maven-jetty-plugin-6.1.16.jar
+8f98c000-8f995000 r--s 00254000 08:07 157578     /home/vincent/jre1.7.0_02/lib/resources.jar
+8f995000-8f997000 r--s 00007000 08:07 498777     /home/vincent/.m2/repository/org/apache/maven/shared/maven-filtering/1.0-beta-2/maven-filtering-1.0-beta-2.jar
+8f997000-8f99a000 ---p 00000000 00:00 0 
+8f99a000-8f9e8000 rw-p 00000000 00:00 0 
+8f9e8000-8f9eb000 ---p 00000000 00:00 0 
+8f9eb000-8fa39000 rw-p 00000000 00:00 0 
+8fa39000-8fa3c000 ---p 00000000 00:00 0 
+8fa3c000-8fa8a000 rw-p 00000000 00:00 0 
+8fa8a000-8fa8d000 ---p 00000000 00:00 0 
+8fa8d000-8fadb000 rw-p 00000000 00:00 0 
+8fadb000-8fadc000 r--s 00002000 08:07 2076844    /home/vincent/.m2/repository/org/apache/maven/reporting/maven-reporting-api/2.0.9/maven-reporting-api-2.0.9.jar
+8fadc000-8fade000 r--s 00006000 08:07 1831551    /home/vincent/.m2/repository/org/apache/maven/shared/maven-common-artifact-filters/1.3/maven-common-artifact-filters-1.3.jar
+8fade000-8fae0000 r--s 0000c000 08:07 269809     /home/vincent/.m2/repository/org/apache/maven/surefire/maven-surefire-common/2.7.1/maven-surefire-common-2.7.1.jar
+8fae0000-8fae3000 r--s 00019000 08:07 408870     /home/vincent/.m2/repository/org/apache/maven/surefire/surefire-api/2.7.1/surefire-api-2.7.1.jar
+8fae3000-8fae4000 r--s 00007000 08:07 490627     /home/vincent/.m2/repository/org/apache/maven/surefire/surefire-booter/2.7.1/surefire-booter-2.7.1.jar
+8fae4000-8fae6000 r--s 00006000 08:07 29         /home/vincent/.m2/repository/org/apache/maven/plugins/maven-surefire-plugin/2.7.1/maven-surefire-plugin-2.7.1.jar
+8fae6000-8fae8000 r--s 00002000 08:07 1880561    /home/vincent/.m2/repository/org/codehaus/plexus/plexus-compiler-javac/1.8.1/plexus-compiler-javac-1.8.1.jar
+8fae8000-8faea000 r--s 00000000 08:07 1864194    /home/vincent/.m2/repository/org/codehaus/plexus/plexus-compiler-manager/1.8.1/plexus-compiler-manager-1.8.1.jar
+8faea000-8faeb000 r--s 00004000 08:07 1989184    /home/vincent/.m2/repository/org/codehaus/plexus/plexus-compiler-api/1.8.1/plexus-compiler-api-1.8.1.jar
+8faeb000-8faed000 r--s 00006000 08:07 16761      /home/vincent/.m2/repository/org/apache/maven/plugins/maven-compiler-plugin/2.3.2/maven-compiler-plugin-2.3.2.jar
+8faed000-8faef000 r--s 0000d000 08:07 1931094    /home/vincent/.m2/repository/org/codehaus/plexus/plexus-interpolation/1.13/plexus-interpolation-1.13.jar
+8faef000-8faf0000 r--s 00001000 08:07 1741500    /home/vincent/.m2/repository/org/sonatype/plexus/plexus-build-api/0.0.4/plexus-build-api-0.0.4.jar
+8faf0000-8faf2000 r--s 00007000 08:07 2020742    /home/vincent/.m2/repository/org/apache/maven/shared/maven-filtering/1.0-beta-4/maven-filtering-1.0-beta-4.jar
+8faf2000-8faf6000 r--s 00033000 08:07 876460     /home/vincent/.m2/repository/org/codehaus/plexus/plexus-utils/2.0.5/plexus-utils-2.0.5.jar
+8faf6000-8faf9000 r--s 0001b000 08:07 1798782    /home/vincent/.m2/repository/junit/junit/3.8.1/junit-3.8.1.jar
+8faf9000-8fafb000 r--s 00002000 08:07 769113     /home/vincent/.m2/repository/org/codehaus/plexus/plexus-interactivity-api/1.0-alpha-4/plexus-interactivity-api-1.0-alpha-4.jar
+8fafb000-8fafd000 r--s 00006000 08:07 915726     /home/vincent/.m2/repository/commons-cli/commons-cli/1.0/commons-cli-1.0.jar
+8fafd000-8fafe000 r--s 00001000 08:07 2020741    /home/vincent/.m2/repository/org/apache/maven/doxia/doxia-sink-api/1.0-alpha-7/doxia-sink-api-1.0-alpha-7.jar
+8fafe000-8faff000 r--s 00002000 08:07 2020740    /home/vincent/.m2/repository/org/apache/maven/reporting/maven-reporting-api/2.0.6/maven-reporting-api-2.0.6.jar
+8faff000-8fb00000 r--s 00005000 08:07 220798     /home/vincent/.m2/repository/org/apache/maven/plugins/maven-resources-plugin/2.4.3/maven-resources-plugin-2.4.3.jar
+8fb00000-8fbfb000 rw-p 00000000 00:00 0 
+8fbfb000-8fc00000 ---p 00000000 00:00 0 
+8fc00000-8fc02000 r--s 00005000 08:07 449722     /home/vincent/.m2/repository/xpp3/xpp3_min/1.1.4c/xpp3_min-1.1.4c.jar
+8fc02000-8fc0d000 r--s 0005f000 08:07 449721     /home/vincent/.m2/repository/com/thoughtworks/xstream/xstream/1.3.1/xstream-1.3.1.jar
+8fc0d000-8fc10000 ---p 00000000 00:00 0 
+8fc10000-8fc5e000 rw-p 00000000 00:00 0 
+8fc5e000-8fc61000 ---p 00000000 00:00 0 
+8fc61000-8fcaf000 rw-p 00000000 00:00 0 
+8fcaf000-8fcb2000 ---p 00000000 00:00 0 
+8fcb2000-8fd00000 rw-p 00000000 00:00 0 
+8fd00000-8fdf1000 rw-p 00000000 00:00 0 
+8fdf1000-8fe00000 ---p 00000000 00:00 0 
+8fe00000-8fed9000 rw-p 00000000 00:00 0 
+8fed9000-8ff00000 ---p 00000000 00:00 0 
+8ff00000-900ff000 rw-p 00000000 00:00 0 
+900ff000-90100000 ---p 00000000 00:00 0 
+90100000-901fc000 rw-p 00000000 00:00 0 
+901fc000-90200000 ---p 00000000 00:00 0 
+90200000-90300000 rw-p 00000000 00:00 0 
+90300000-903fc000 rw-p 00000000 00:00 0 
+903fc000-90400000 ---p 00000000 00:00 0 
+90400000-90403000 r--s 0000a000 08:07 474218     /home/vincent/.m2/repository/org/codehaus/plexus/plexus-io/1.0.1/plexus-io-1.0.1.jar
+90403000-90407000 r--s 00029000 08:07 2076850    /home/vincent/.m2/repository/org/codehaus/plexus/plexus-archiver/1.2/plexus-archiver-1.2.jar
+90407000-90408000 r--s 00004000 08:07 81805      /home/vincent/.m2/repository/org/apache/maven/maven-archiver/2.4.1/maven-archiver-2.4.1.jar
+90408000-9040a000 r--s 00011000 08:07 41164      /home/vincent/.m2/repository/org/apache/maven/plugins/maven-war-plugin/2.1.1/maven-war-plugin-2.1.1.jar
+9040a000-9040d000 ---p 00000000 00:00 0 
+9040d000-90419000 rw-p 00000000 00:00 0 
+90419000-9041c000 ---p 00000000 00:00 0 
+9041c000-9046a000 rw-p 00000000 00:00 0 
+9046a000-9047a000 r--s 000bc000 08:07 645988     /home/vincent/eclipse/configuration/org.eclipse.osgi/bundles/780/1/.cp/netty-3.2.4.Final.jar
+9047a000-90480000 r--s 0004c000 08:07 645981     /home/vincent/eclipse/configuration/org.eclipse.osgi/bundles/762/1/.cp/async-http-client-1.6.3.jar
+90480000-90482000 r--s 00005000 08:07 638236     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/wagon-ahc-1.2.0.jar
+90482000-90484000 r--s 0000c000 08:07 638198     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/aether-connector-asynchttpclient-1.11.jar
+90484000-90487000 r--s 0001e000 08:07 638200     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/aether-impl-1.11.jar
+90487000-90489000 r--s 0000d000 08:07 638238     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/wagon-provider-api-1.0-beta-6.jar
+90489000-9048c000 r--s 0001d000 08:07 638202     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/aether-util-1.11.jar
+9048c000-9048e000 r--s 00004000 08:07 638201     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/aether-spi-1.11.jar
+9048e000-90491000 r--s 00015000 08:07 638197     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/aether-api-1.11.jar
+90491000-90493000 r--s 00007000 08:07 638199     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/aether-connector-wagon-1.11.jar
+90493000-9049e000 r--s 00073000 08:07 638235     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/sisu-guice-2.9.4-no_aop.jar
+9049e000-904a2000 r--s 00036000 08:07 638234     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/plexus-utils-2.0.6.jar
+904a2000-904a3000 r--s 00005000 08:07 638214     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/guice-plexus-scanners-2.0.0.jar
+904a3000-904a5000 r--s 00006000 08:07 638210     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/guice-plexus-binders-2.0.0.jar
+904a5000-904a6000 r--s 00004000 08:07 638212     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/guice-plexus-locators-2.0.0.jar
+904a6000-904a8000 r--s 00002000 08:07 638211     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/guice-plexus-converters-2.0.0.jar
+904a8000-904a9000 r--s 00004000 08:07 638213     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/guice-plexus-metadata-2.0.0.jar
+904a9000-904ab000 r--s 00001000 08:07 638205     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/guice-bean-converters-2.0.0.jar
+904ab000-904ad000 r--s 00012000 08:07 638209     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/guice-bean-scanners-2.0.0.jar
+904ad000-904af000 r--s 00007000 08:07 638204     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/guice-bean-binders-2.0.0.jar
+904af000-904b2000 r--s 0000b000 08:07 638207     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/guice-bean-locators-2.0.0.jar
+904b2000-904b4000 r--s 00002000 08:07 638206     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/guice-bean-inject-2.0.0.jar
+904b4000-904b6000 r--s 00009000 08:07 638208     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/guice-bean-reflect-2.0.0.jar
+904b6000-904b7000 r--s 00001000 08:07 638216     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/javax.inject-1.jar
+904b7000-904b9000 r--s 00001000 08:07 638231     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/plexus-component-annotations-1.5.5.jar
+904b9000-904be000 r--s 0001d000 08:07 638215     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/guice-plexus-shim-2.0.0.jar
+904be000-904bf000 r--s 00003000 08:07 638237     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/wagon-file-1.0-beta-7.jar
+904bf000-904c1000 r--s 0000a000 08:07 638203     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/commons-cli-1.2.jar
+904c1000-904c7000 r--s 00044000 08:07 638219     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/maven-compat-3.0.2.jar
+904c7000-904c9000 r--s 0000f000 08:07 638232     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/plexus-interpolation-1.14.jar
+904c9000-904cb000 r--s 0000d000 08:07 638217     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/maven-aether-provider-3.0.2.jar
+904cb000-904d7000 r--s 00081000 08:07 638220     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/maven-core-3.0.2.jar
+904d7000-904d8000 ---p 00000000 00:00 0 
+904d8000-90558000 rw-p 00000000 00:00 0 
+90558000-9055b000 ---p 00000000 00:00 0 
+9055b000-905a9000 rw-p 00000000 00:00 0 
+905a9000-905ac000 ---p 00000000 00:00 0 
+905ac000-9062a000 rw-p 00000000 00:00 0 
+9062a000-9062d000 ---p 00000000 00:00 0 
+9062d000-906ab000 rw-p 00000000 00:00 0 
+906ab000-906ae000 ---p 00000000 00:00 0 
+906ae000-906fc000 rw-p 00000000 00:00 0 
+906fc000-908fc000 r--p 00000000 08:06 203739     /usr/lib/locale/locale-archive
+908fc000-908ff000 ---p 00000000 00:00 0 
+908ff000-9094d000 rw-p 00000000 00:00 0 
+9094d000-90950000 ---p 00000000 00:00 0 
+90950000-9099e000 rw-p 00000000 00:00 0 
+9099e000-9099f000 ---p 00000000 00:00 0 
+9099f000-90a6a000 rw-p 00000000 00:00 0 
+90a6a000-90c29000 r--s 031d1000 08:07 157571     /home/vincent/jre1.7.0_02/lib/rt.jar
+90c29000-90c2a000 ---p 00000000 00:00 0 
+90c2a000-90caa000 rw-p 00000000 00:00 0 
+90caa000-90cab000 ---p 00000000 00:00 0 
+90cab000-90d3e000 rw-p 00000000 00:00 0 
+90d3e000-90d4b000 rw-p 00000000 00:00 0 
+90d4b000-90d61000 rw-p 00000000 00:00 0 
+90d61000-90df3000 rw-p 00000000 00:00 0 
+90df3000-90e06000 rw-p 00000000 00:00 0 
+90e06000-90e13000 rw-p 00000000 00:00 0 
+90e13000-90e29000 rw-p 00000000 00:00 0 
+90e29000-90ebb000 rw-p 00000000 00:00 0 
+90ebb000-90f0f000 rw-p 00000000 00:00 0 
+90f0f000-93470000 rw-p 00000000 00:00 0 
+93470000-94f10000 rw-p 00000000 00:00 0 
+94f10000-97930000 rw-p 00000000 00:00 0 
+97930000-a9f10000 rw-p 00000000 00:00 0 
+a9f10000-b4710000 rw-p 00000000 00:00 0 
+b4710000-b4711000 r--p 00000000 00:00 0 
+b4711000-b4713000 r--s 0000d000 08:07 638218     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/maven-artifact-3.0.2.jar
+b4713000-b4715000 r--s 0000a000 08:07 638227     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/maven-settings-builder-3.0.2.jar
+b4715000-b4717000 r--s 00028000 08:07 638222     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/maven-model-3.0.2.jar
+b4717000-b4718000 r--s 00004000 08:07 638229     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/plexus-cipher-1.4.jar
+b4718000-b471a000 r--s 00007000 08:07 638233     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/plexus-sec-dispatcher-1.3.jar
+b471a000-b471f000 r--s 00023000 08:07 638223     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/maven-model-builder-3.0.2.jar
+b471f000-b4729000 rw-p 00000000 00:00 0 
+b4729000-b47df000 rw-p 00000000 00:00 0 
+b47df000-b4a47000 rwxp 00000000 00:00 0 
+b4a47000-b77df000 rw-p 00000000 00:00 0 
+b77df000-b77e2000 ---p 00000000 00:00 0 
+b77e2000-b7832000 rw-p 00000000 00:00 0 
+b7832000-b7833000 r--s 00008000 08:07 638225     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/maven-repository-metadata-3.0.2.jar
+b7833000-b7835000 r--s 0000c000 08:07 638224     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/maven-plugin-api-3.0.2.jar
+b7835000-b7836000 r--s 0000c000 08:07 638226     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/maven-settings-3.0.2.jar
+b7836000-b7837000 r--s 0000b000 08:07 638221     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/maven-embedder-3.0.2.jar
+b7837000-b7839000 r--s 00009000 08:07 638239     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/local-patches.jar
+b7839000-b783d000 r--s 0007b000 08:07 157600     /home/vincent/jre1.7.0_02/lib/jsse.jar
+b783d000-b7840000 r--s 0000b000 08:07 638230     /home/vincent/eclipse/plugins/org.eclipse.m2e.maven.runtime_1.0.200.20111228-1245/jars/plexus-classworlds-2.4.jar
+b7840000-b7841000 r--p 002a7000 08:06 203739     /usr/lib/locale/locale-archive
+b7841000-b7849000 rw-s 00000000 08:06 565453     /tmp/hsperfdata_vincent/22962
+b7849000-b784a000 rw-p 00000000 00:00 0 
+b784a000-b784b000 r--p 00000000 00:00 0 
+b784b000-b784d000 rw-p 00000000 00:00 0 
+bfa76000-bfa97000 rw-p 00000000 00:00 0          [stack]
+
+VM Arguments:
+jvm_args: -Dmaven.home=EMBEDDED -Dclassworlds.conf=/home/vincent/workspace/.metadata/.plugins/org.eclipse.m2e.core/launches/m2conf3020351860267426865.tmp -Dfile.encoding=UTF-8 
+java_command: org.codehaus.plexus.classworlds.launcher.Launcher -B jetty:run-war
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+USERNAME=vincent
+LD_LIBRARY_PATH=/home/vincent/jre1.7.0_02/lib/i386/server:/home/vincent/jre1.7.0_02/lib/i386:/home/vincent/jre1.7.0_02/../lib/i386:/opt/java/32/jre1.6.0_22/lib/i386/client:/opt/java/32/jre1.6.0_22/lib/i386:
+SHELL=/bin/zsh
+DISPLAY=:0
+
+Signal Handlers:
+SIGSEGV: [libjvm.so+0x6e2860], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGBUS: [libjvm.so+0x6e2860], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGFPE: [libjvm.so+0x5a3810], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGPIPE: [libjvm.so+0x5a3810], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGXFSZ: [libjvm.so+0x5a3810], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGILL: [libjvm.so+0x5a3810], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGUSR1: SIG_DFL, sa_mask[0]=0x00000000, sa_flags=0x00000000
+SIGUSR2: [libjvm.so+0x5a3110], sa_mask[0]=0x00000004, sa_flags=0x10000004
+SIGHUP: [libjvm.so+0x5a56e0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGINT: [libjvm.so+0x5a56e0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGTERM: [libjvm.so+0x5a56e0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+SIGQUIT: [libjvm.so+0x5a56e0], sa_mask[0]=0x7ffbfeff, sa_flags=0x10000004
+
+
+---------------  S Y S T E M  ---------------
+
+OS:squeeze/sid
+
+uname:Linux 2.6.38-13-generic #56-Ubuntu SMP Tue Feb 14 12:40:40 UTC 2012 i686
+libc:glibc 2.13 NPTL 2.13 
+rlimit: STACK 8192k, CORE 0k, NPROC infinity, NOFILE 4096, AS infinity
+load average:1,52 0,59 0,37
+
+/proc/meminfo:
+MemTotal:        2059248 kB
+MemFree:           98400 kB
+Buffers:           27880 kB
+Cached:           524408 kB
+SwapCached:          452 kB
+Active:          1106164 kB
+Inactive:         751552 kB
+Active(anon):     841908 kB
+Inactive(anon):   477780 kB
+Active(file):     264256 kB
+Inactive(file):   273772 kB
+Unevictable:          16 kB
+Mlocked:              16 kB
+HighTotal:       1186632 kB
+HighFree:           1744 kB
+LowTotal:         872616 kB
+LowFree:           96656 kB
+SwapTotal:       2353904 kB
+SwapFree:        2344556 kB
+Dirty:             32812 kB
+Writeback:             0 kB
+AnonPages:       1304944 kB
+Mapped:           119452 kB
+Shmem:             14260 kB
+Slab:              43836 kB
+SReclaimable:      31132 kB
+SUnreclaim:        12704 kB
+KernelStack:        3472 kB
+PageTables:        10516 kB
+NFS_Unstable:          0 kB
+Bounce:                0 kB
+WritebackTmp:          0 kB
+CommitLimit:     3383528 kB
+Committed_AS:    3176840 kB
+VmallocTotal:     122880 kB
+VmallocUsed:       63400 kB
+VmallocChunk:      25596 kB
+HardwareCorrupted:     0 kB
+HugePages_Total:       0
+HugePages_Free:        0
+HugePages_Rsvd:        0
+HugePages_Surp:        0
+Hugepagesize:       4096 kB
+DirectMap4k:      155640 kB
+DirectMap4M:      753664 kB
+
+
+CPU:total 2 (2 cores per cpu, 1 threads per core) family 6 model 15 stepping 13, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3
+
+/proc/cpuinfo:
+processor	: 0
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 15
+model name	: Intel(R) Core(TM)2 Duo CPU     T5450  @ 1.66GHz
+stepping	: 13
+cpu MHz		: 1667.000
+cache size	: 2048 KB
+physical id	: 0
+siblings	: 2
+core id		: 0
+cpu cores	: 2
+apicid		: 0
+initial apicid	: 0
+fdiv_bug	: no
+hlt_bug		: no
+f00f_bug	: no
+coma_bug	: no
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 10
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe nx lm constant_tsc arch_perfmon pebs bts aperfmperf pni dtes64 monitor ds_cpl est tm2 ssse3 cx16 xtpr pdcm lahf_lm dts
+bogomips	: 3325.49
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+processor	: 1
+vendor_id	: GenuineIntel
+cpu family	: 6
+model		: 15
+model name	: Intel(R) Core(TM)2 Duo CPU     T5450  @ 1.66GHz
+stepping	: 13
+cpu MHz		: 1667.000
+cache size	: 2048 KB
+physical id	: 0
+siblings	: 2
+core id		: 1
+cpu cores	: 2
+apicid		: 1
+initial apicid	: 1
+fdiv_bug	: no
+hlt_bug		: no
+f00f_bug	: no
+coma_bug	: no
+fpu		: yes
+fpu_exception	: yes
+cpuid level	: 10
+wp		: yes
+flags		: fpu vme de pse tsc msr pae mce cx8 apic mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe nx lm constant_tsc arch_perfmon pebs bts aperfmperf pni dtes64 monitor ds_cpl est tm2 ssse3 cx16 xtpr pdcm lahf_lm dts
+bogomips	: 3325.49
+clflush size	: 64
+cache_alignment	: 64
+address sizes	: 36 bits physical, 48 bits virtual
+power management:
+
+
+
+Memory: 4k page, physical 2059248k(98400k free), swap 2353904k(2344556k free)
+
+vm_info: Java HotSpot(TM) Server VM (22.0-b10) for linux-x86 JRE (1.7.0_02-b13), built on Nov 17 2011 13:24:17 by "java_re" with gcc 4.3.0 20080428 (Red Hat 4.3.0-8)
+
+time: Sun Mar 11 17:48:14 2012
+elapsed time: 23 seconds
+

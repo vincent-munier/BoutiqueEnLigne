@@ -9,48 +9,55 @@
 	xmlns:sf="http://www.springframework.org/tags/faces"
 	xmlns:a4j="http://richfaces.org/a4j"
 	xmlns:rich="http://richfaces.org/rich"
-	xmlns:spring="http://www.springframework.org/tags"
-    >
-	
-	<body>
-		<ui:composition template="layout.xhtml">
-			<style type="text/css">
-				.row1 {
-					background-color: #EDEBEB;
-				}
-				.row2 {
-					background-color: #ffffff;
-				}
-			</style>
-			<ui:define name="content">
-				<h:form id="listProduct">
-					<rich:dataTable value="#{flowScope.listProduct}" var="product" border="1" cellspacing="4" width="100%" id="table" rows="20" rowClasses="row1, row2">
-						<rich:column>
-							<f:facet name="header">
-								<f:verbatim></f:verbatim>
-							</f:facet>
-							<h:graphicImage value="#{product.imageUrl}" /> 
-						</rich:column>
-						<rich:column  sortBy="#{product.name}">
-							<f:facet name="header">
-								<f:verbatim>Titre</f:verbatim>
-							</f:facet>
-							<h:outputText value="#{product.name}"/>
-						</rich:column>
-						<rich:column sortBy="#{product.price}">
-							<f:facet name="header">
-								<f:verbatim>Prix</f:verbatim>
-							</f:facet>
-							<h:outputText value="#{product.price}"/>
-						</rich:column>
-						<rich:column>
-							<h:commandButton id="addCart" action="addCart" type="submit" value="Ajouter" style="font:bold;" styleClass="none;" />
-						</rich:column>
-					</rich:dataTable>
-					<rich:datascroller for="table" align="center"></rich:datascroller>
-				</h:form>
-			</ui:define>
-		</ui:composition>
-	</body>
+	xmlns:spring="http://www.springframework.org/tags">
+
+<body>
+	<ui:composition template="layout.xhtml">
+		<style type="text/css">
+.row1 {
+	background-color: #EDEBEB;
+}
+
+.row2 {
+	background-color: #ffffff;
+}
+</style>
+		<ui:define name="content">
+			<h:form id="listProduct">
+				<rich:dataTable value="#{flowScope.listProduct}" var="product"
+					border="1" cellspacing="4" width="100%" id="table" rows="20"
+					rowClasses="row1, row2">
+					<rich:column>
+						<f:facet name="header">
+							<f:verbatim></f:verbatim>
+						</f:facet>
+						<h:graphicImage value="#{product.imageUrl}" />
+					</rich:column>
+					<rich:column sortBy="#{product.name}">
+						<f:facet name="header">
+							<f:verbatim>Titre</f:verbatim>
+						</f:facet>
+						<h:outputText value="#{product.name}" />
+					</rich:column>
+					<rich:column sortBy="#{product.price}">
+						<f:facet name="header">
+							<f:verbatim>Prix</f:verbatim>
+						</f:facet>
+						<h:outputText value="#{product.price}" />
+					</rich:column>
+					<rich:column>
+						<h:commandButton id="addCart" action="addCart" type="submit"
+							value="Ajouter" style="font:bold;" styleClass="none;" />
+					</rich:column>
+				</rich:dataTable>
+				<rich:datascroller for="table" align="center"></rich:datascroller>
+
+				<h:commandButton id="testPayment" action="testPayment" type="submit"
+					value="TestPayment-AEFFACER!" style="font:bold;" styleClass="none;" />
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</body>
 </html>
-			
+

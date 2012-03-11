@@ -2,16 +2,30 @@ package fr.umlv.m2.jee.persistence.address;
 
 import java.io.Serializable;
 
-import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
 
 public class CreditCard implements Serializable {
   private static final long serialVersionUID = 2583776150150880489L;
   String number;
-  DateTime expirationDate;
+  LocalDate expirationDate;
   String ownerName;
   String crypto;
+  CardType cardType;
 
-  public CreditCard(String number, DateTime expirationDate, String ownerName,
+  protected enum CardType {
+    VISA("Visa"), CB("Carte Bleu"), MC("Master Card");
+    protected String label;
+
+    CardType(String pLabel) {
+      this.label = pLabel;
+    }
+
+    public String getLabel() {
+      return this.label;
+    }
+  }
+
+  public CreditCard(String number, LocalDate expirationDate, String ownerName,
       String crypto) {
     this.number = number;
     this.expirationDate = expirationDate;
@@ -27,11 +41,11 @@ public class CreditCard implements Serializable {
     this.number = number;
   }
 
-  public DateTime getExpirationDate() {
+  public LocalDate getExpirationDate() {
     return expirationDate;
   }
 
-  public void setExpirationDate(DateTime expirationDate) {
+  public void setExpirationDate(LocalDate expirationDate) {
     this.expirationDate = expirationDate;
   }
 
@@ -61,6 +75,14 @@ public class CreditCard implements Serializable {
     result = prime * result + ((number == null) ? 0 : number.hashCode());
     result = prime * result + ((ownerName == null) ? 0 : ownerName.hashCode());
     return result;
+  }
+
+  public CardType getCardType() {
+    return cardType;
+  }
+
+  public void setCardType(CardType cardType) {
+    this.cardType = cardType;
   }
 
   @Override

@@ -17,21 +17,20 @@
 			type="java.lang.String" />
 
 		<evaluate expression="defaultDisplayProductService.init()"></evaluate>
-		<evaluate expression="defaultDisplayProductService.getAllProduct()"
-			result="flowScope.listProduct" result-type="dataModel"></evaluate>
 		<!-- faire un test de role (client, utilisateur) est stocké ds une var 
 			a part pour retest dans la page -->
 	</on-start>
 
 	<view-state id="listProduct" view="listProduct.xhtml">
+		<on-entry>
+			<evaluate expression="defaultDisplayProductService.getAllProduct()"
+				result="flowScope.listProduct" result-type="dataModel" />
+		</on-entry>
 
 		<transition on="addCart" to="addCart">
 			<set name="Product" value="flowScope.listProduct.selectedRow" />
 		</transition>
-		<transition on="viewCart" to="cart">
-			<evaluate expression="defaultDisplayCartService.getAllProduct()"
-				result="flowScope.listDisplayProduct" result-type="dataModel"></evaluate>
-		</transition>
+		<transition on="viewCart" to="cart" />
 
 		<transition on="testPayment" to="paymentMode" />
 
@@ -39,24 +38,22 @@
 
 
 	<view-state id="newAddress" view="command/newAddress.xhtml">
+		<var name="newAddress" class="fr.umlv.m2.jee.persistence.address.Address" />
+
 		<transition on="back" to="command">
 			<evaluate expression="defaultDisplayAddressService.getAddressesByClientId(0)"
 				result="flowScope.listAddresses" result-type="dataModel"></evaluate>
 		</transition>
+
+		<transition on="continueCommand" to="paymentMode" />
 	</view-state>
 
 	<view-state id="command" view="command/availableAddress.xhtml">
-		<transition on="viewCart" to="cart">
-			<evaluate expression="defaultDisplayCartService.getAllProduct()"
-				result="flowScope.listDisplayProduct" result-type="dataModel"></evaluate>
-		</transition>
-		<transition on="backPurchase" to="listProduct">
-			<evaluate expression="defaultDisplayProductService.getAllProduct()"
-				result="flowScope.listProduct" result-type="dataModel"></evaluate>
-		</transition>
-		<transition on="continueCommand" to="newAddress" />
-
+		<transition on="viewCart" to="cart" />
+		<transition on="backPurchase" to="listProduct" />
+		<transition on="newAddress" to="newAddress" />
 	</view-state>
+
 
 	<view-state id="cart" view="cart.xhtml" model="DisplayProduct">
 		<binder>
@@ -66,10 +63,13 @@
 			<binding property="birthday" required="true" />
 			<binding property="death" required="true" />
 		</binder>
-		<transition on="continue" to="listProduct">
-			<evaluate expression="defaultDisplayProductService.getAllProduct()"
-				result="flowScope.listProduct" result-type="dataModel"></evaluate>
-		</transition>
+
+		<on-entry>
+			<evaluate expression="defaultDisplayCartService.getAllProduct()"
+				result="flowScope.listDisplayProduct" result-type="dataModel"></evaluate>
+		</on-entry>
+
+		<transition on="continue" to="listProduct"/>
 		<transition on="checkout" to="command">
 			<evaluate expression="defaultDisplayAddressService.getAddressesByClientId(0)"
 				result="flowScope.listAddresses" result-type="dataModel"></evaluate>
@@ -80,30 +80,21 @@
 		<transition on="updateCart" to="updateCart">
 			<set name="DisplayProduct" value="flowScope.listDisplayProduct.selectedRow" />
 		</transition>
-		<transition on="viewCart" to="cart">
-			<evaluate expression="defaultDisplayCartService.getAllProduct()"
-				result="flowScope.listDisplayProduct" result-type="dataModel"></evaluate>
-		</transition>
+		<transition on="viewCart" to="cart"/>
 	</view-state>
 
 	<action-state id="addCart">
 		<evaluate expression="defaultDisplayCartService.addProduct(Product)"></evaluate>
-		<transition on="success" to="cart">
-			<evaluate expression="defaultDisplayCartService.getAllProduct()"
-				result="flowScope.listDisplayProduct" result-type="dataModel"></evaluate>
-		</transition>
+		<transition on="success" to="cart" />
 	</action-state>
 
 	<action-state id="delCart">
 		<evaluate expression="defaultDisplayCartService.delProduct(DisplayProduct)"></evaluate>
-		<transition on="success" to="cart">
-			<evaluate expression="defaultDisplayCartService.getAllProduct()"
-				result="flowScope.listDisplayProduct" result-type="dataModel"></evaluate>
-		</transition>
-
+		<transition on="success" to="cart" />
 	</action-state>
+
 	<view-state id="paymentMode" view="payment_choice.xhtml">
-		<transition on="back" to="" />
+		<transition on="back" to="command" />
 		<transition on="continue" to="mode" />
 	</view-state>
 

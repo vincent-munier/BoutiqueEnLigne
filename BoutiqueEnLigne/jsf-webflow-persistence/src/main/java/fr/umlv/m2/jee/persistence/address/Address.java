@@ -8,9 +8,9 @@ public class Address implements Serializable {
   // all string because we will not do any arithmetic computations on them
   private String num;
   private String street;
-  private String city;
   private String postalCode;
-  private String country;
+  private String city;
+  private String country = "France";
 
   public Address() {
   }

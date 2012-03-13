@@ -15,35 +15,39 @@
 	<ui:composition template="../layout.xhtml">
 
 		<ui:define name="content">
-			<fieldset>
-				<h2>Entrez votre adresse de livraison</h2>
+			<h2>Entrez votre adresse de livraison</h2>
+			<h:form>
 				<table style="border: 0">
 					<tr>
-						<td>Adresse :</td>
-						<td><h:inputText value="" id="address" /></td>
+						<td>Numéro :</td>
+						<td><h:inputText value="#{newAddress.num}" id="num" /></td>
+					</tr>
+					<tr>
+						<td>Rue :</td>
+						<td><h:inputText value="#{newAddress.street}" id="street" /></td>
 					</tr>
 					<tr>
 						<td>Code postal :</td>
-						<td><h:inputText value="" id="postalCode" /></td>
+						<td><h:inputText value="#{newAddress.postalCode}" id="postalCode" /></td>
 					</tr>
 					<tr>
 						<td>Ville :</td>
-						<td><h:inputText value="" id="town" /></td>
+						<td><h:inputText value="#{newAddress.city}" id="city" /></td>
 					</tr>
 					<tr>
 						<td>Pays :</td>
-						<td><h:inputText value="France" id="country" /></td>
+						<td><h:inputText value="#{newAddress.country}" id="country" /></td>
 					</tr>
 				</table>
-				<h:form>
-					<h:commandButton id="continuePurchase" action="back" type="submit"
-						value="Retour" style="font:bold;" styleClass="none;" />
-					<h:commandButton id="continueCommand" action="continueCommand"
-						type="submit" value="Continuer la commande" style="font:bold;"
-						styleClass="none;" />
+			</h:form>
+			<h:form>
+				<h:commandButton id="continuePurchase" action="back" type="submit"
+					value="Retour" style="font:bold;" styleClass="none;" />
+				<h:commandButton id="continueCommand" action="continueCommand"
+					type="submit" value="Continuer la commande" style="font:bold;"
+					styleClass="none;" />
 
-				</h:form>
-			</fieldset>
+			</h:form>
 		</ui:define>
 	</ui:composition>
 </body>

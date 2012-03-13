@@ -40,15 +40,16 @@
 	<view-state id="newAddress" view="command/newAddress.xhtml">
 		<var name="newAddress" class="fr.umlv.m2.jee.persistence.address.Address" />
 
-		<transition on="back" to="command">
-			<evaluate expression="defaultDisplayAddressService.getAddressesByClientId(0)"
-				result="flowScope.listAddresses" result-type="dataModel"></evaluate>
-		</transition>
+		<transition on="back" to="command" />
 
 		<transition on="continueCommand" to="paymentMode" />
 	</view-state>
 
 	<view-state id="command" view="command/availableAddress.xhtml">
+		<on-entry>
+			<evaluate expression="defaultDisplayAddressService.getAddressesByClientId(0)"
+				result="flowScope.listAddresses" result-type="dataModel"></evaluate>
+		</on-entry>
 		<transition on="viewCart" to="cart" />
 		<transition on="backPurchase" to="listProduct" />
 		<transition on="newAddress" to="newAddress" />
@@ -69,18 +70,15 @@
 				result="flowScope.listDisplayProduct" result-type="dataModel"></evaluate>
 		</on-entry>
 
-		<transition on="continue" to="listProduct"/>
-		<transition on="checkout" to="command">
-			<evaluate expression="defaultDisplayAddressService.getAddressesByClientId(0)"
-				result="flowScope.listAddresses" result-type="dataModel"></evaluate>
-		</transition>
+		<transition on="continue" to="listProduct" />
+		<transition on="checkout" to="command" />
 		<transition on="delCart" to="delCart">
 			<set name="DisplayProduct" value="flowScope.listDisplayProduct.selectedRow" />
 		</transition>
 		<transition on="updateCart" to="updateCart">
 			<set name="DisplayProduct" value="flowScope.listDisplayProduct.selectedRow" />
 		</transition>
-		<transition on="viewCart" to="cart"/>
+		<transition on="viewCart" to="cart" />
 	</view-state>
 
 	<action-state id="addCart">
@@ -100,6 +98,11 @@
 
 	<view-state id="mode" view="paymentMode.xhtml">
 		<transition on="back" to="paymentMode" />
-		<transition on="continue" to="" />
+		<transition on="continue" to="recap" />
+	</view-state>
+
+	<view-state id="recap" view="command/racap.xhtml">
+		<transition on="back" to="mode" />
+		<transition on="validate" to="listProduct" />
 	</view-state>
 </flow>

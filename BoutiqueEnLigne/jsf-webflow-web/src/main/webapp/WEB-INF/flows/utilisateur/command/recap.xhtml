@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jstl/core"
+	xmlns:sf="http://www.springframework.org/tags/faces"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:spring="http://www.springframework.org/tags">
+
+<body>
+	<ui:composition template="../layout.xhtml">
+
+		<ui:define name="content">
+			<legend style="color: blue; font-weight: bold;">Récapitulatif
+				de la commande</legend>
+			<h:form>
+				<h:commandButton id="back" action="back" type="submit"
+					value="Retour" style="font:bold;" styleClass="none;" />
+				<h:commandButton id="validate" action="validate" type="submit"
+					value="Valider la commande" style="font:bold;" styleClass="none;" />
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>
+

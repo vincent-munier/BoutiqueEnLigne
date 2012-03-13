@@ -13,32 +13,43 @@
 <body>
 
 	<ui:composition template="../layout.xhtml">
+		<style type="text/css">
+.row1 {
+	background-color: #EDEBEB;
+}
 
+.row2 {
+	background-color: #ffffff;
+}
+</style>
 		<ui:define name="content">
 			<fieldset>
-
+				<legend style="color: blue; font-weight: bold;">Votre
+					adresse de livraison</legend>
 				<h:form id="listAddressesForm">
-					<table id="availableAddresses">
-						<tr>
-							<td><rich:dataTable value="#{flowScope.listAddresses}"
-									var="adr" border="1" cellspacing="4" width="100%" id="table"
-									rows="20">
-									<rich:column selectionMode="single" />
-									<rich:column>
-										<f:facet name="header">
-											<f:verbatim>Adresses disponibles</f:verbatim>
-										</f:facet>
+					<rich:dataTable value="#{flowScope.listAddresses}" var="adr"
+						border="1" cellspacing="4" width="100%" id="table" rows="20"
+						rowClasses="row1, row2">
+						<rich:column selectionMode="single" />
+						<rich:column>
+							<f:facet name="header">
+								<f:verbatim>Adresses disponibles</f:verbatim>
+							</f:facet>
 
-										<!-- <input type="radio" name="addresses" value="adrRadio" /> -->
-										<h:outputText value="#{adr.formattedString}" />
-									</rich:column>
-								</rich:dataTable> <rich:datascroller for="table" align="center" maxPages="10"
-									renderIfSinglePage="false"></rich:datascroller></td>
-							<td><input type="radio" name="addresses" value="adrRadio" />
-								Saisir une autre adresse de livraison</td>
-						</tr>
-					</table>
+							<h:outputText value="#{adr.formattedString}" />
+						</rich:column>
+						<rich:column>
+							<h:commandButton id="selectedAdr" action="selectedAdr"
+								type="submit" value="selectionner" style="font:bold;"
+								styleClass="none;"></h:commandButton>
+						</rich:column>
 
+					</rich:dataTable>
+					<rich:datascroller for="table" align="center" maxPages="10"
+						renderIfSinglePage="false"></rich:datascroller>
+					<h:commandButton id="newAddress" action="newAddress" type="submit"
+						value="Saisir une autre adresse de livraison" style="font:bold;"
+						styleClass="none;" />
 				</h:form>
 			</fieldset>
 
@@ -46,9 +57,6 @@
 				<h:form>
 					<h:commandButton id="backPurchase" action="backPurchase"
 						type="submit" value="Revenir à vos achats" style="font:bold;"
-						styleClass="none;" />
-					<h:commandButton id="continueCommand" action="continueCommand"
-						type="submit" value="Continuer la commande" style="font:bold;"
 						styleClass="none;" />
 				</h:form>
 			</fieldset>

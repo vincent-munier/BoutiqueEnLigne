@@ -18,53 +18,49 @@
 				<c:if test="#{flowScope.paymentMode == 'Cheque'}">
 					<legend style="color: blue; font-weight: bold;">Chêque</legend>
 					<h:form id="chequeMode">
-						<h:outputLabel value="Adresse d'envoie : " />
-						<br />
-						<h:outputLabel value="Sociéte XYYX " />
-						<br />
-						<h:outputLabel value="1 rue du petit clos" />
-						<br />
-						<h:outputLabel value="91370 Clamart CEDEX" />
-						<br />
+						<h:panelGrid columns="1">
+							<h:outputLabel value="Adresse d'envoie : " />
+							<h:outputLabel value="Sociéte XYYX " />
+							<h:outputLabel value="1 rue du petit clos" />
+							<h:outputLabel value="91370 Clamart CEDEX" />
+						</h:panelGrid>
 						<h:commandButton id="back" action="back" type="submit"
 							value="Retour" style="font:bold;" styleClass="none;" />
 						<h:commandButton id="continue" action="continue" type="submit"
 							value="Valider" style="font:bold;" styleClass="none;" />
+
 					</h:form>
 				</c:if>
 				<c:if test="#{flowScope.paymentMode == 'CB'}">
 					<legend style="color: blue; font-weight: bold;">Carte Bleu</legend>
 					<h:form id="cbMode">
+
 						<h:selectOneRadio layout="lineDirection"
 							value="#{flowScope.cbType}">
 							<f:selectItem itemLabel="Visa" itemValue="visa" />
 							<f:selectItem itemLabel="Carte Bleu" itemValue="bleu" />
 							<f:selectItem itemLabel="MasterCard" itemValue="master" />
 						</h:selectOneRadio>
-						<h:panelGroup>
+
+						<h:panelGrid columns="2">
+
 							<h:outputLabel id="numCardLabel" for="numCardTxt"
 								value="Numéro de carte : " />
 							<h:inputText id="numCardTxt" />
-						</h:panelGroup>
-						<br />
-						<h:panelGroup>
+
 							<h:outputLabel id="dateLabel" for="dateCardTxt"
 								value="Date d'expiration : " />
 							<h:inputText id="dateCardTxt" />
-						</h:panelGroup>
-						<br />
-						<h:panelGroup>
+
 							<h:outputLabel id="nameCardLabel" for="nameCardTxt"
 								value="Nom du propriétaire : " />
 							<h:inputText id="nameCardTxt" />
-						</h:panelGroup>
-						<br />
-						<h:panelGroup>
+
 							<h:outputLabel id="cryptCardLabel" for="cryptCardTxt"
 								value="Cryptogramme : " />
 							<h:inputText id="cryptCardTxt" />
-						</h:panelGroup>
-						<br />
+
+						</h:panelGrid>
 						<h:commandButton id="back" action="back" type="submit"
 							value="Retour" style="font:bold;" styleClass="none;" />
 						<h:commandButton id="continue" action="continue" type="submit"
@@ -74,28 +70,26 @@
 				<c:if test="#{flowScope.paymentMode == 'Virement'}">
 					<legend style="color: blue; font-weight: bold;">Virement</legend>
 					<h:form id="virementMode">
-						<h:panelGroup>
+
+						<h:panelGrid columns="2">
 							<h:outputLabel id="numAccount" for="numAccountTxt"
 								value="Numéro de compte : " />
 							<h:inputText id="numAccountTxt" />
-						</h:panelGroup>
-						<br />
-						<h:panelGroup>
+
 							<h:outputLabel id="numGuichetLabel" for="numGuichetTxt"
 								value="Code guichet : " />
 							<h:inputText id="numGuichetTxt" />
-						</h:panelGroup>
-						<br />
-						<h:panelGroup>
+
 							<h:outputLabel id="numAgencyLabel" for="numAgencyTxt"
 								value="Code agence : " />
 							<h:inputText id="numAgencyTxt" />
-						</h:panelGroup>
-						<br />
+						</h:panelGrid>
 						<h:commandButton id="back" action="back" type="submit"
 							value="Retour" style="font:bold;" styleClass="none;" />
 						<h:commandButton id="continue" action="continue" type="submit"
 							value="Valider" style="font:bold;" styleClass="none;" />
+
+
 					</h:form>
 				</c:if>
 			</fieldset>

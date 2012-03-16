@@ -8,13 +8,12 @@
 	<var name="Product" class="fr.umlv.m2.jee.persistence.product.Product" />
 	<var name="DisplayProduct" class="fr.umlv.m2.jee.jsf.webflow.service.cart.DisplayProduct" />
 
+	<var name="selectedAddress" class="fr.umlv.m2.jee.persistence.address.Address" />
+
 	<on-start>
 		<evaluate expression="defaultDisplayCartService.init()"></evaluate>
 		<set name="flowScope.paymentMode" value="'Cheque'" type="java.lang.String" />
 		<set name="flowScope.cbType" value="'visa'" type="java.lang.String" />
-
-		<set name="flowScope.selectedAddress" value="'default Adress'"
-			type="java.lang.String" />
 
 		<evaluate expression="defaultDisplayProductService.init()"></evaluate>
 		<!-- faire un test de role (client, utilisateur) est stocké ds une var 
@@ -30,18 +29,15 @@
 		<transition on="addCart" to="addCart">
 			<set name="Product" value="flowScope.listProduct.selectedRow" />
 		</transition>
-		<transition on="viewCart" to="cart" />
 
+		<transition on="viewCart" to="cart" />
 		<transition on="testPayment" to="paymentMode" />
 
 	</view-state>
 
 
 	<view-state id="newAddress" view="command/newAddress.xhtml">
-		<var name="newAddress" class="fr.umlv.m2.jee.persistence.address.Address" />
-
 		<transition on="back" to="command" />
-
 		<transition on="continueCommand" to="paymentMode" />
 	</view-state>
 
@@ -50,6 +46,11 @@
 			<evaluate expression="defaultDisplayAddressService.getAddressesByClientId(0)"
 				result="flowScope.listAddresses" result-type="dataModel"></evaluate>
 		</on-entry>
+
+		<transition on="select" to="paymentMode">
+			<set name="flowScope.address" value="listAddresses.selectedRow" />
+			<set name="flowScope.selectedAddress" value="listAddresses.selectedRow" />
+		</transition>
 		<transition on="viewCart" to="cart" />
 		<transition on="backPurchase" to="listProduct" />
 		<transition on="newAddress" to="newAddress" />

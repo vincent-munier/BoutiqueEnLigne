@@ -15,37 +15,37 @@
 	<ui:composition template="../layout.xhtml">
 
 		<ui:define name="content">
-			<h2>Entrez votre adresse de livraison</h2>
-			<h:form>
+			<fieldset>
+				<legend style="color: blue; font-weight: bold;">Nouvelle
+					adresse de livraison</legend>
+				<h:form>
 
-				<h:panelGrid columns="2">
-					<h:outputLabel value="Numéro :" />
-					<h:inputText id="num" value="#{newAddress.num}" required="true" />
+					<h:panelGrid columns="2">
+						<h:outputLabel value="Numéro :" />
+						<h:inputText id="num" value="#{selectedAddress.num}" />
 
-					<h:outputLabel value="Rue :" />
-					<h:inputText id="street" value="#{newAddress.street}"
-						required="true" />
+						<h:outputLabel value="Rue :" />
+						<h:inputText id="street" value="#{selectedAddress.street}" />
 
-					<h:outputLabel value="Code postal :" />
-					<h:inputText id="postalCode" value="#{newAddress.postalCode}"
-						required="true" />
+						<h:outputLabel value="Code postal :" />
+						<h:inputText id="postalCode" value="#{selectedAddress.postalCode}" />
 
-					<h:outputLabel value="Ville :" />
-					<h:inputText id="city" value="#{newAddress.city}" required="true" />
+						<h:outputLabel value="Ville :" />
+						<h:inputText id="city" value="#{selectedAddress.city}" />
 
-					<h:outputLabel value="Pays :" />
-					<h:inputText id="country" value="#{newAddress.country}"
-						required="true" />
+						<h:outputLabel value="Pays :" />
+						<h:inputText id="country" value="#{selectedAddress.country}" />
 
-				</h:panelGrid>
+					</h:panelGrid>
 
-				<h:commandButton id="continuePurchase" action="back" type="submit"
-					value="Retour" style="font:bold;" styleClass="none;" />
-				<h:commandButton id="continueCommand" action="continueCommand"
-					type="submit" value="Continuer la commande" style="font:bold;"
-					styleClass="none;" />
+					<h:commandButton id="continuePurchase" action="back" type="submit"
+						value="Retour" style="font:bold;" styleClass="none;" />
+					<h:commandButton id="continueCommand" action="continueCommand"
+						type="submit" value="Continuer la commande" style="font:bold;"
+						styleClass="none;" />
 
-			</h:form>
+				</h:form>
+			</fieldset>
 		</ui:define>
 	</ui:composition>
 </body>

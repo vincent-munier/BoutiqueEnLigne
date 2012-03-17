@@ -6,6 +6,7 @@ import fr.umlv.m2.jee.persistence.product.Product;
 
 public interface IDisplayCartService {
 	public void addProduct(Product p);
+	public void clear();
 	public List<DisplayProduct> getAllProduct();
 	public void delProduct(DisplayProduct dp);
 }

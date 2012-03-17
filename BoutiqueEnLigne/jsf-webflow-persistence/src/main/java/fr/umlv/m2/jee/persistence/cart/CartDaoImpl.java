@@ -6,35 +6,40 @@ import fr.umlv.m2.jee.persistence.product.Product;
 
 public class CartDaoImpl implements CartDao {
 
-  private Cart c;
+  private Cart cart;
 
   public CartDaoImpl() {
-    c = new Cart();
+    cart = new Cart();
   }
 
   @Override
   public void addProduct(Product p) {
-    if (c.getProducts().containsKey(p))
-      c.getProducts().put(p, c.getProducts().get(p) + 1);
+    if (cart.getProducts().containsKey(p))
+      cart.getProducts().put(p, cart.getProducts().get(p) + 1);
     else
-      c.getProducts().put(p, 1);
+      cart.getProducts().put(p, 1);
   }
 
   @Override
   public Map<Product, Integer> getAllProduct() {
-    return c.getProducts();
+    return cart.getProducts();
   }
 
   @Override
   public void delProduct(Product p) {
     Product del = null;
-    for (Product po : c.getProducts().keySet()) {
+    for (Product po : cart.getProducts().keySet()) {
       if (po.getId().equals(p.getId())) {
         del = po;
         break;
       }
     }
-    c.getProducts().remove(del);
+    cart.getProducts().remove(del);
+  }
+
+  @Override
+  public void clear() {
+    cart.clear();
   }
 
 }

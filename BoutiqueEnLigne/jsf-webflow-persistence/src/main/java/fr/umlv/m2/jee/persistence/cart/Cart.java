@@ -20,5 +20,7 @@ public class Cart {
 		this.products = products;
 	}
 	
-	
+	public void clear() {
+	  products.clear();
+	}
 }

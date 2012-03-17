@@ -7,7 +7,6 @@
 
 	<var name="Product" class="fr.umlv.m2.jee.persistence.product.Product" />
 	<var name="DisplayProduct" class="fr.umlv.m2.jee.jsf.webflow.service.cart.DisplayProduct" />
-
 	<var name="selectedAddress" class="fr.umlv.m2.jee.persistence.address.Address" />
 
 	<on-start>
@@ -31,14 +30,16 @@
 		</transition>
 
 		<transition on="viewCart" to="cart" />
-		<transition on="testPayment" to="paymentMode" />
-
 	</view-state>
 
 
 	<view-state id="newAddress" view="command/newAddress.xhtml">
+		<transition on="viewCart" to="cart" />
 		<transition on="back" to="command" />
-		<transition on="continueCommand" to="recap" />
+		<transition on="continueCommand" to="recap">
+			<evaluate
+				expression="defaultDisplayAddressService.add(flowScope.selectedAddress)"></evaluate>
+		</transition>
 	</view-state>
 
 	<view-state id="command" view="command/availableAddress.xhtml">
@@ -51,7 +52,7 @@
 			<set name="flowScope.selectedAddress" value="listAddresses.selectedRow" />
 		</transition>
 		<transition on="viewCart" to="cart" />
-		<transition on="backPurchase" to="listProduct" />
+		<transition on="back" to="listProduct" />
 		<transition on="newAddress" to="newAddress" />
 	</view-state>
 
@@ -92,18 +93,23 @@
 	</action-state>
 
 	<view-state id="recap" view="command/recap.xhtml">
+		<transition on="viewCart" to="cart" />
 		<transition on="back" to="command" />
 		<transition on="validate" to="paymentMode" />
 	</view-state>
 
 	<view-state id="paymentMode" view="payment_choice.xhtml">
+		<transition on="viewCart" to="cart" />
 		<transition on="back" to="recap" />
 		<transition on="continue" to="mode" />
 	</view-state>
 
 	<view-state id="mode" view="paymentMode.xhtml">
+		<transition on="viewCart" to="cart" />
 		<transition on="back" to="paymentMode" />
-		<transition on="continue" to="listProduct" />
+		<transition on="continue" to="listProduct">
+			<evaluate expression="defaultDisplayCartService.clear()" />
+		</transition>
 	</view-state>
 
 

@@ -30,4 +30,10 @@ public class DefaultDisplayAddressService implements IDisplayAddressService {
     return addresses;
   }
 
+  public void add(Address adr) {
+    if (addresses.contains(adr))
+      return;
+    addresses.add(adr);
+  }
+
 }

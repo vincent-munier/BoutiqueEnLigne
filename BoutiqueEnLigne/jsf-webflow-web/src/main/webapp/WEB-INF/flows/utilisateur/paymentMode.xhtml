@@ -27,8 +27,7 @@
 						<h:commandButton id="back" action="back" type="submit"
 							value="Retour" style="font:bold;" styleClass="none;" />
 						<h:commandButton id="continue" action="continue" type="submit"
-							value="Valider" style="font:bold;" styleClass="none;" />
-
+							value="Valider l'achat" style="font:bold;" styleClass="none;" />
 					</h:form>
 				</c:if>
 				<c:if test="#{flowScope.paymentMode == 'CB'}">
@@ -64,7 +63,7 @@
 						<h:commandButton id="back" action="back" type="submit"
 							value="Retour" style="font:bold;" styleClass="none;" />
 						<h:commandButton id="continue" action="continue" type="submit"
-							value="Valider" style="font:bold;" styleClass="none;" />
+							value="Effectuer le paiement" style="font:bold;" styleClass="none;" />
 					</h:form>
 				</c:if>
 				<c:if test="#{flowScope.paymentMode == 'Virement'}">
@@ -87,9 +86,7 @@
 						<h:commandButton id="back" action="back" type="submit"
 							value="Retour" style="font:bold;" styleClass="none;" />
 						<h:commandButton id="continue" action="continue" type="submit"
-							value="Valider" style="font:bold;" styleClass="none;" />
-
-
+							value="Effectuer le paiement" style="font:bold;" styleClass="none;" />
 					</h:form>
 				</c:if>
 			</fieldset>

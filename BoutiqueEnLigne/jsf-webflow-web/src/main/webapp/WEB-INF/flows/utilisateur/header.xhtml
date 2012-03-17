@@ -13,7 +13,7 @@
 <body>
 	<ui:composition>
 		<div id="banner">
-			<img src="/banniere.jpg" alt="Mon ordinateur"></img>
+			<img src="/images/banniere.jpg" alt="Mon ordinateur"></img>
 		</div>
 		<div id="account">
 			<h:form>
@@ -35,7 +35,8 @@
 		</div>
 		<div id="cart">
 			<h:form>
-				<h:commandLink value="Panier" action="viewCart" />
+				<!-- <h:commandLink value="Panier" action="viewCart" /> -->
+				<h:commandButton image="/images/cart.gif" value="Panier" action="viewCart" />
 			</h:form>
 		</div>
 	</ui:composition>

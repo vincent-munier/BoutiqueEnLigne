@@ -59,7 +59,7 @@ public class DefaultDisplayProductService implements IDisplayProductService {
         "http://ecx.images-amazon.com/images/I/61TrkGnhDhL._SL160_.jpg",
         new Category(0, "Autres"));
     result.add(p1);
-
+    result.add(p1);
     return result;
   }
 

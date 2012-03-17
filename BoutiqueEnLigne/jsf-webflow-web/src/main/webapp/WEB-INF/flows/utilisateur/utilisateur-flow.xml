@@ -38,7 +38,7 @@
 
 	<view-state id="newAddress" view="command/newAddress.xhtml">
 		<transition on="back" to="command" />
-		<transition on="continueCommand" to="paymentMode" />
+		<transition on="continueCommand" to="recap" />
 	</view-state>
 
 	<view-state id="command" view="command/availableAddress.xhtml">
@@ -47,8 +47,7 @@
 				result="flowScope.listAddresses" result-type="dataModel"></evaluate>
 		</on-entry>
 
-		<transition on="select" to="paymentMode">
-			<set name="flowScope.address" value="listAddresses.selectedRow" />
+		<transition on="select" to="recap">
 			<set name="flowScope.selectedAddress" value="listAddresses.selectedRow" />
 		</transition>
 		<transition on="viewCart" to="cart" />
@@ -92,18 +91,20 @@
 		<transition on="success" to="cart" />
 	</action-state>
 
-	<view-state id="paymentMode" view="payment_choice.xhtml">
+	<view-state id="recap" view="command/recap.xhtml">
 		<transition on="back" to="command" />
+		<transition on="validate" to="paymentMode" />
+	</view-state>
+
+	<view-state id="paymentMode" view="payment_choice.xhtml">
+		<transition on="back" to="recap" />
 		<transition on="continue" to="mode" />
 	</view-state>
 
 	<view-state id="mode" view="paymentMode.xhtml">
 		<transition on="back" to="paymentMode" />
-		<transition on="continue" to="recap" />
+		<transition on="continue" to="listProduct" />
 	</view-state>
 
-	<view-state id="recap" view="command/racap.xhtml">
-		<transition on="back" to="mode" />
-		<transition on="validate" to="listProduct" />
-	</view-state>
+
 </flow>

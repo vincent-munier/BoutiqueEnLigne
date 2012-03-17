@@ -87,7 +87,12 @@ public class Address implements Serializable {
   }
 
   public String getFormattedString() {
-    return num + " " + street + " \n" + postalCode + " " + city + " " + country;
+    return num + " " + street + " " + postalCode + " " + city + " " + country;
+  }
+
+  public String getFormattedStringWithBr() {
+    return num + " " + street + "<br/>" + postalCode + " " + city + " "
+        + country;
   }
 
   public void setFormattedString() {

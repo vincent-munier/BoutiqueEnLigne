@@ -13,10 +13,56 @@
 
 <body>
 	<ui:composition template="../layout.xhtml">
-
 		<ui:define name="content">
 			<legend style="color: blue; font-weight: bold;">Récapitulatif
 				de la commande</legend>
+
+			<fieldset>
+				<legend style="color: blue; font-weight: bold;">Votre
+					panier</legend>
+				<h:form id="listProduct">
+					<rich:dataTable value="#{flowScope.listDisplayProduct}"
+						var="product" border="1" cellspacing="4" width="100%" id="table"
+						rows="5" rowClasses="row1, row2">
+						<rich:column>
+							<f:facet name="header">
+								<f:verbatim></f:verbatim>
+							</f:facet>
+							<h:graphicImage value="#{product.imageUrl}" />
+						</rich:column>
+						<rich:column sortBy="#{product.name}">
+							<f:facet name="header">
+								<f:verbatim>Titre</f:verbatim>
+							</f:facet>
+							<h:outputText value="#{product.name}" />
+						</rich:column>
+						<rich:column sortBy="#{product.quantity}">
+							<f:facet name="header">
+								<f:verbatim>Quantité</f:verbatim>
+							</f:facet>
+							<h:outputText value="#{product.quantity}" />
+						</rich:column>
+						<rich:column sortBy="#{product.priceTot}">
+							<f:facet name="header">
+								<f:verbatim>Prix</f:verbatim>
+							</f:facet>
+							<h:outputText value="#{product.priceTot}" />
+						</rich:column>
+					</rich:dataTable>
+					<rich:datascroller for="table" align="center"
+						renderIfSinglePage="false"></rich:datascroller>
+				</h:form>
+			</fieldset>
+
+			<fieldset>
+				<legend style="color: blue; font-weight: bold;">Adresse de
+					livraison</legend>
+				<h:form>
+					<h:outputLabel id="num"
+						value="#{selectedAddress.formattedStringWithBr}" escape="false" />
+				</h:form>
+			</fieldset>
+
 			<h:form>
 				<h:commandButton id="back" action="back" type="submit"
 					value="Retour" style="font:bold;" styleClass="none;" />
@@ -24,6 +70,7 @@
 					value="Valider la commande" style="font:bold;" styleClass="none;" />
 
 			</h:form>
+
 		</ui:define>
 	</ui:composition>
 </body>

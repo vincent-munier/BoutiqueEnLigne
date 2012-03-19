@@ -30,6 +30,7 @@
 							value="Valider l'achat" style="font:bold;" styleClass="none;" />
 					</h:form>
 				</c:if>
+
 				<c:if test="#{flowScope.paymentMode == 'CB'}">
 					<legend style="color: blue; font-weight: bold;">Carte Bleu</legend>
 					<h:form id="cbMode">
@@ -41,27 +42,30 @@
 							<f:selectItem itemLabel="MasterCard" itemValue="master" />
 						</h:selectOneRadio>
 
-						<h:panelGrid columns="2">
+						<h:panelGrid columns="3">
 
 							<h:outputLabel id="numCardLabel" for="numCardTxt"
 								value="Numéro de carte : " />
-							<h:inputText id="numCardTxt" />
+							<h:inputText id="numCardTxt"  required="true" requiredMessage="Numéro de carte manquant" />
+			  <h:message for="numCardTxt" />
 
 							<h:outputLabel id="dateLabel" for="dateCardTxt"
 								value="Date d'expiration : " />
-							<h:inputText id="dateCardTxt" />
+							<h:inputText id="dateCardTxt"  required="true" requiredMessage="Date d'expiration manquante" />
+			  <h:message for="dateCardTxt" />
 
 							<h:outputLabel id="nameCardLabel" for="nameCardTxt"
 								value="Nom du propriétaire : " />
-							<h:inputText id="nameCardTxt" />
+							<h:inputText id="nameCardTxt"  required="true" requiredMessage="Nom manquant" />
+			  <h:message for="nameCardTxt" />
 
 							<h:outputLabel id="cryptCardLabel" for="cryptCardTxt"
 								value="Cryptogramme : " />
-							<h:inputText id="cryptCardTxt" />
-
+							<h:inputText id="cryptCardTxt"  required="true" requiredMessage="Cryptogramme manquant" />
+			  <h:message for="cryptCardTxt" />
 						</h:panelGrid>
 						<h:commandButton id="back" action="back" type="submit"
-							value="Retour" style="font:bold;" styleClass="none;" />
+							value="Retour" style="font:bold;" styleClass="none;" immediate="true"/>
 						<h:commandButton id="continue" action="continue" type="submit"
 							value="Effectuer le paiement" style="font:bold;" styleClass="none;" />
 					</h:form>
@@ -70,21 +74,25 @@
 					<legend style="color: blue; font-weight: bold;">Virement</legend>
 					<h:form id="virementMode">
 
-						<h:panelGrid columns="2">
+						<h:panelGrid columns="3">
 							<h:outputLabel id="numAccount" for="numAccountTxt"
 								value="Numéro de compte : " />
-							<h:inputText id="numAccountTxt" />
+							<h:inputText id="numAccountTxt" required="true"  requiredMessage="Numéro de compte manquant" />
+			  <h:message for="numAccountTxt" />
 
 							<h:outputLabel id="numGuichetLabel" for="numGuichetTxt"
 								value="Code guichet : " />
-							<h:inputText id="numGuichetTxt" />
+							<h:inputText id="numGuichetTxt" required="true"  requiredMessage="Code guichet manquant" />
+			  <h:message for="numGuichetTxt" />
 
 							<h:outputLabel id="numAgencyLabel" for="numAgencyTxt"
 								value="Code agence : " />
-							<h:inputText id="numAgencyTxt" />
+							<h:inputText id="numAgencyTxt" required="true" requiredMessage="Code agence manquant" />
+			  <h:message for="numAgencyTxt" />
+
 						</h:panelGrid>
 						<h:commandButton id="back" action="back" type="submit"
-							value="Retour" style="font:bold;" styleClass="none;" />
+							value="Retour" style="font:bold;" styleClass="none;" immediate="true"/>
 						<h:commandButton id="continue" action="continue" type="submit"
 							value="Effectuer le paiement" style="font:bold;" styleClass="none;" />
 					</h:form>

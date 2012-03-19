@@ -2,52 +2,58 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:c="http://java.sun.com/jstl/core"
-	xmlns:sf="http://www.springframework.org/tags/faces"
-	xmlns:a4j="http://richfaces.org/a4j"
-	xmlns:rich="http://richfaces.org/rich"
-	xmlns:spring="http://www.springframework.org/tags">
-
-<body>
-	<ui:composition template="../layout.xhtml">
-
-		<ui:define name="content">
-			<fieldset>
-				<legend style="color: blue; font-weight: bold;">Nouvelle
-					adresse de livraison</legend>
-				<h:form>
-
-					<h:panelGrid columns="2">
-						<h:outputLabel value="Numéro :" />
-						<h:inputText id="num" value="#{selectedAddress.num}" />
-
-						<h:outputLabel value="Rue :" />
-						<h:inputText id="street" value="#{selectedAddress.street}" />
-
-						<h:outputLabel value="Code postal :" />
-						<h:inputText id="postalCode" value="#{selectedAddress.postalCode}" />
-
-						<h:outputLabel value="Ville :" />
-						<h:inputText id="city" value="#{selectedAddress.city}" />
-
-						<h:outputLabel value="Pays :" />
-						<h:inputText id="country" value="#{selectedAddress.country}" />
-
-					</h:panelGrid>
-
-					<h:commandButton id="continuePurchase" action="back" type="submit"
-						value="Retour" style="font:bold;" styleClass="none;" />
-					<h:commandButton id="continueCommand" action="continueCommand"
-						type="submit" value="Continuer la commande" style="font:bold;"
-						styleClass="none;" />
-
-				</h:form>
-			</fieldset>
-		</ui:define>
-	</ui:composition>
-</body>
+  xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:h="http://java.sun.com/jsf/html"
+  xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:c="http://java.sun.com/jstl/core"
+  xmlns:sf="http://www.springframework.org/tags/faces"
+  xmlns:a4j="http://richfaces.org/a4j"
+  xmlns:rich="http://richfaces.org/rich"
+  xmlns:spring="http://www.springframework.org/tags">
+  
+  <body>
+    <ui:composition template="../layout.xhtml">
+      
+      <ui:define name="content">
+	<fieldset>
+	  <legend style="color: blue; font-weight: bold;">Nouvelle
+	    adresse de livraison</legend>
+	<h:form>
+	  
+	  <h:panelGrid columns="3">
+	    <h:outputLabel value="Numéro :" />
+	      <h:inputText id="num" value="#{selectedAddress.num}" required="true" requiredMessage="Numéro manquant" />
+		<h:message for="num" />
+		  
+		  <h:outputLabel value="Rue :" />
+		    <h:inputText id="street" value="#{selectedAddress.street}" required="true"  requiredMessage="Rue manquante"/>
+		      <h:message for="street" />
+			
+			
+			<h:outputLabel value="Code postal :" />
+			  <h:inputText id="postalCode" value="#{selectedAddress.postalCode}" required="true"  requiredMessage="Code postal manquant"/>
+			    <h:message for="postalCode" />
+			      
+			      <h:outputLabel value="Ville :" />
+				<h:inputText id="city" value="#{selectedAddress.city}" required="true"  requiredMessage="Ville manquante"/>
+				  <h:message for="city" />
+				    
+				    <h:outputLabel value="Pays :" />
+				      <h:inputText id="country" value="#{selectedAddress.country}" required="true" requiredMessage="Pays manquant"/>
+					<h:message for="country" />
+					  
+	  </h:panelGrid>
+	  
+	  <h:commandButton id="continuePurchase" action="back" type="submit"
+	    value="Retour" style="font:bold;" styleClass="none;" immediate="true" />
+	    <h:commandButton id="continueCommand" action="continueCommand"
+	      type="submit" value="Continuer la commande" style="font:bold;"
+	      styleClass="none;" />
+	      
+	</h:form>
+      </fieldset>
+      </ui:define>
+    </ui:composition>
+  </body>
 </html>
 

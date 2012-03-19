@@ -8,5 +8,6 @@ public interface IDisplayCartService {
 	public void addProduct(Product p);
 	public void clear();
 	public List<DisplayProduct> getAllProduct();
+	public double getPriceTot();
 	public void delProduct(DisplayProduct dp);
 }

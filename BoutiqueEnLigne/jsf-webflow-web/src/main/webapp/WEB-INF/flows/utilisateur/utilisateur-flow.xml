@@ -69,6 +69,7 @@
 		<on-entry>
 			<evaluate expression="defaultDisplayCartService.getAllProduct()"
 				result="flowScope.listDisplayProduct" result-type="dataModel"></evaluate>
+			<set name="flowScope.totalPrice" value="defaultDisplayCartService.getPriceTot()" />
 		</on-entry>
 
 		<transition on="continue" to="listProduct" />
@@ -93,6 +94,10 @@
 	</action-state>
 
 	<view-state id="recap" view="command/recap.xhtml">
+		<on-entry>
+			<set name="flowScope.totalPrice" value="defaultDisplayCartService.getPriceTot()" />
+		</on-entry>
+
 		<transition on="viewCart" to="cart" />
 		<transition on="back" to="command" />
 		<transition on="validate" to="paymentMode" />

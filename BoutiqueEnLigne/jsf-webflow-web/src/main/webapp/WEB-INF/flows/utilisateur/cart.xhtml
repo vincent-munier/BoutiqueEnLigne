@@ -52,15 +52,20 @@
 							<f:facet name="header">
 								<f:verbatim>Prix</f:verbatim>
 							</f:facet>
-							<h:outputText value="#{product.priceTot}" />
+							<h:outputText value="$ #{product.priceTot}" />
 						</rich:column>
 						<rich:column>
 							<h:commandButton id="delCart" action="delCart" type="submit"
 								value="Supprimer" style="font:bold;" styleClass="none;" />
 						</rich:column>
 						<rich:column>
-							<h:commandButton id="updateCart" action="updateCart" type="submit" value="Modifier" style="font:bold;" styleClass="none;" />
+							<h:commandButton id="updateCart" action="updateCart"
+								type="submit" value="Modifier" style="font:bold;"
+								styleClass="none;" />
 						</rich:column>
+						<f:facet name="footer">
+							<h:outputText value="Prix total : $ #{flowScope.totalPrice}" />
+						</f:facet>
 					</rich:dataTable>
 					<rich:datascroller for="table" align="center"></rich:datascroller>
 					<h:commandButton id="continue" action="continue" type="submit"

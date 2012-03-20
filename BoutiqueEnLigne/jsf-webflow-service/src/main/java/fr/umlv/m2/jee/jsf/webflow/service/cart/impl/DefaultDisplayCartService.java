@@ -59,5 +59,11 @@ public class DefaultDisplayCartService implements IDisplayCartService {
 		p.setId(dp.getId());
 		dao.delProduct(p);
 	}
+	
+	 public void updateProduct(DisplayProduct dp) {
+	    Product p = new Product();
+	    p.setId(dp.getId());
+	    dao.updateProduct(p, dp.getQuantity());
+	  }
 
 }

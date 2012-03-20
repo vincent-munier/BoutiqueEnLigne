@@ -46,7 +46,7 @@
 							<f:facet name="header">
 								<f:verbatim>Quantité</f:verbatim>
 							</f:facet>
-							<h:outputText value="#{product.quantity}" />
+							<h:inputText value="#{product.quantity}" />
 						</rich:column>
 						<rich:column sortBy="#{product.priceTot}">
 							<f:facet name="header">
@@ -60,7 +60,7 @@
 						</rich:column>
 						<rich:column>
 							<h:commandButton id="updateCart" action="updateCart"
-								type="submit" value="Modifier" style="font:bold;"
+								type="submit" value="Actualiser" style="font:bold;"
 								styleClass="none;" />
 						</rich:column>
 						<f:facet name="footer">

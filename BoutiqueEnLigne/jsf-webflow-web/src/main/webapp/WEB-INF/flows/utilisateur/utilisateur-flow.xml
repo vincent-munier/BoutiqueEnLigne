@@ -58,13 +58,6 @@
 
 
 	<view-state id="cart" view="cart.xhtml" model="DisplayProduct">
-		<binder>
-			<binding property="ssid" required="true" />
-			<binding property="lastName" required="true" />
-			<binding property="firstName" required="true" />
-			<binding property="birthday" required="true" />
-			<binding property="death" required="true" />
-		</binder>
 
 		<on-entry>
 			<evaluate expression="defaultDisplayCartService.getAllProduct()"
@@ -90,6 +83,11 @@
 
 	<action-state id="delCart">
 		<evaluate expression="defaultDisplayCartService.delProduct(DisplayProduct)"></evaluate>
+		<transition on="success" to="cart" />
+	</action-state>
+	
+	<action-state id="updateCart">
+		<evaluate expression="defaultDisplayCartService.updateProduct(DisplayProduct)"></evaluate>
 		<transition on="success" to="cart" />
 	</action-state>
 

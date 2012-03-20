@@ -42,4 +42,17 @@ public class CartDaoImpl implements CartDao {
     cart.clear();
   }
 
+  @Override
+  public void updateProduct(Product p, int val) {
+    Product update = null;
+    for (Product po : cart.getProducts().keySet()) {
+      if (po.getId().equals(p.getId())) {
+        update = po;
+        break;
+      }
+    }
+    cart.getProducts().put(update, val);
+  }
+
+
 }

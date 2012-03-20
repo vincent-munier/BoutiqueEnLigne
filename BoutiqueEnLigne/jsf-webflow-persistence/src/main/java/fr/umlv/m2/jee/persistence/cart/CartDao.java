@@ -9,4 +9,5 @@ public interface CartDao {
 	public void clear();
 	public Map<Product, Integer> getAllProduct();
 	public void delProduct(Product p);
+	public void updateProduct(Product p, int val);
 }

@@ -4,20 +4,21 @@ import fr.umlv.m2.jee.persistence.category.Category;
 
 import java.io.Serializable;
 
-public class Product implements Serializable{
+public class Product implements Serializable {
   private static final long serialVersionUID = -1911129413615174692L;
   private String id;
   private String name;
   private String price;
   private String description;
   private String imageUrl;
-  private Category category;
+
   // categoryId is only used by ProductDao to fill the category field above
   // initialized to -1 which is an invalid id and will raise an exception in
   // productDao.find if it is not set with a valid id
   private long categoryId = -1;
+  private Category category;
 
-  public Product(){
+  public Product() {
   }
 
   public Product(String id, String name, String price, String description,

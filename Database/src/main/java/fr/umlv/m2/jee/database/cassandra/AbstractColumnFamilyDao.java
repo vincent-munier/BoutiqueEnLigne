@@ -86,7 +86,7 @@ public abstract class AbstractColumnFamilyDao<KeyType, T> {
 		CqlRows<KeyType, String, byte[]> rows = res.get();
 
 		for (Row<KeyType, String, byte[]> row : rows.getList()) {
-
+		  
 			KeyType key = row.getKey();
 			T valueFound = find(key);
 			// In Cassandra, a deleted row becomes empty but is not necessarily

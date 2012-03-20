@@ -56,14 +56,13 @@ public final class DaoHelper {
 
         Serializer<Object> serializer = SerializerTypeInferer
             .getSerializer(value);
-        
-        boolean notAPrimitiveType = serializer == null;
-        if (notAPrimitiveType)
+
+        boolean notAPrimitiveType = !(value instanceof String || value instanceof Number);
+        if (notAPrimitiveType || name.equals("serialVersionUID") )
           continue;
         
         HColumn<String, ?> column = HFactory.createColumn(name, value,
             StringSerializer.get(), serializer);
-
         columns.add(column);
       }
       return columns;

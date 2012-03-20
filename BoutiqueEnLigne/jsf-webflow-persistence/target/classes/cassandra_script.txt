@@ -34,38 +34,37 @@ create column family Products
                            {column_name: price, validation_class:UTF8Type},
                            {column_name: categoryId, validation_class:LongType}];
  	
-set Products['A144GEAD56'][id] = 'A144GEAD56';
-set Products['A144GEAD56'][name] = 'Tv Hd';
-set Products['A144GEAD56'][description] = 'Écran géant comme au cinéma';
-set Products['A144GEAD56'][price] = '360';
-set Products['A144GEAD56'][categoryId] = '3';
+set Products['B000FQ9R4E'][id] = 'B000FQ9R4E';
+set Products['B000FQ9R4E'][name] = 'Tv Hd';
+set Products['B000FQ9R4E'][description] = 'Écran géant comme au cinéma';
+set Products['B000FQ9R4E'][price] = '360';
+set Products['B000FQ9R4E'][categoryId] = '3';
 
-set Products['D329FEJD7M'][id] = 'D329FEJD7M';
-set Products['D329FEJD7M'][name] = 'Buzz l\'Éclair';
-set Products['D329FEJD7M'][description] = 'Buzz vole pour de vrai !';
-set Products['D329FEJD7M'][price] = '59.99';
-set Products['D329FEJD7M'][categoryId] = '0';
+set Products['1401206425'][id] = '1401206425';
+set Products['1401206425'][name] = 'Buzz l\'Éclair';
+set Products['1401206425'][description] = 'Buzz vole pour de vrai !';
+set Products['1401206425'][price] = '59.99';
+set Products['1401206425'][categoryId] = '0';
 
-set Products['G974FFPJ72'][id] = 'G974FFPJ72';
-set Products['G974FFPJ72'][name] = 'Apprendre à programmer en C';
-set Products['G974FFPJ72'][description] = 'Livre pédagogique pour apprendre le langage C';
-set Products['G974FFPJ72'][price] = '35';
-set Products['G974FFPJ72'][categoryId] = '1';
+set Products['0752866508'][id] = '0752866508';
+set Products['0752866508'][name] = 'Apprendre à programmer en C';
+set Products['0752866508'][description] = 'Livre pédagogique pour apprendre le langage C';
+set Products['0752866508'][price] = '35';
+set Products['0752866508'][categoryId] = '1';
 
-set Products['Y145PLSZ03'][id] = 'Y145PLSZ03';
-set Products['Y145PLSZ03'][name] = 'Mathématiques concrètes : Fondations pour l\'informatique';
-set Products['Y145PLSZ03'][description] = 'ouvrage consacré aux mathématiques qui sont à la base de l\'informatique';
-set Products['Y145PLSZ03'][price] = '70.02';
-set Products['Y145PLSZ03'][categoryId] = '1';
-
+set Products['B000059MEK'][id] = 'B000059MEK';
+set Products['B000059MEK'][name] = 'Mathématiques concrètes : Fondations pour l\'informatique';
+set Products['B000059MEK'][description] = 'ouvrage consacré aux mathématiques qui sont à la base de l\'informatique';
+set Products['B000059MEK'][price] = '70.02';
+set Products['B000059MEK'][categoryId] = '1';
 
 create column family CategoryProducts
     with comparator = 'UTF8Type'
     and default_validation_class = 'UTF8Type'
     and key_validation_class = 'LongType';
 
-set CategoryProducts[0]['D329FEJD7M'] = '';
-set CategoryProducts[1]['G974FFPJ72'] = '';
-set CategoryProducts[1]['Y145PLSZ03'] = '';
-set CategoryProducts[3]['A144GEAD56'] = '';
+set CategoryProducts[0]['1401206425'] = '';
+set CategoryProducts[1]['0752866508'] = '';
+set CategoryProducts[1]['B000059MEK'] = '';
+set CategoryProducts[3]['B000FQ9R4E'] = '';
 

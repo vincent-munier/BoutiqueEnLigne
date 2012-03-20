@@ -15,8 +15,6 @@
 		<set name="flowScope.cbType" value="'visa'" type="java.lang.String" />
 
 		<evaluate expression="defaultDisplayProductService.init()"></evaluate>
-		<!-- faire un test de role (client, utilisateur) est stocké ds une var 
-			a part pour retest dans la page -->
 	</on-start>
 
 	<view-state id="listProduct" view="listProduct.xhtml">

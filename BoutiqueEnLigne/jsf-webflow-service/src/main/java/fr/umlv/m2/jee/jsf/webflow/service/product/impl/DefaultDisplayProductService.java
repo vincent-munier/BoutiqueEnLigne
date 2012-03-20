@@ -48,13 +48,13 @@ public class DefaultDisplayProductService implements IDisplayProductService {
     products.put("B000FQ9R4E", p4);
   }
 
-   public List<Product> getAllProduct() {
-   List<Product> result = new ArrayList<Product>();
-   AWSECommerceServicePortType port = UtilsWebService.InitWebService();
-   result.addAll(UtilsWebService.getProductById(port, new ArrayList<String>(
-   products.keySet())));
-   return result;
-   }
+  // public List<Product> getAllProduct() {
+  // List<Product> result = new ArrayList<Product>();
+  // AWSECommerceServicePortType port = UtilsWebService.InitWebService();
+  // result.addAll(UtilsWebService.getProductById(port, new ArrayList<String>(
+  // products.keySet())));
+  // return result;
+  // }
 
   // getAllProduct coded in hard. It does not pass through the Amazon Web
   // Service.
@@ -65,19 +65,19 @@ public class DefaultDisplayProductService implements IDisplayProductService {
   // Category(0, "Autres")); result.add(p1); result.add(p1); return result; }
 
   // Use the dao to call Cassandra
-//  @Override
-//  public List<Product> getAllProduct() {
-//    ProductDao dao = new ProductDaoImp();
-//    Map<String, Product> products = dao.findAll();
-//    List<Product> result = new ArrayList<Product>();
-//    List<String> id = new ArrayList<String>(products.size());
-//    for (Product p : products.values()) 
-//      id.add(p.getId());
-//   
-//    AWSECommerceServicePortType port = UtilsWebService.InitWebService();
-//    result.addAll(UtilsWebService.getProductById(port, id));
-//    return result;
-//  }
+  @Override
+  public List<Product> getAllProduct() {
+    ProductDao dao = new ProductDaoImp();
+    Map<String, Product> products = dao.findAll();
+    List<Product> result = new ArrayList<Product>();
+    List<String> id = new ArrayList<String>(products.size());
+    for (Product p : products.values())
+      id.add(p.getId());
+
+    AWSECommerceServicePortType port = UtilsWebService.InitWebService();
+    result.addAll(UtilsWebService.getProductById(port, id));
+    return result;
+  }
 
   public List<Product> getProductByCat(int cat) {
     // TODO Auto-generated method stub
